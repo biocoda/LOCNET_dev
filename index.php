@@ -45,8 +45,6 @@
 
             getEmailFromLS();
 
-            
-
         </script>
         
         <!-- Index Modal -->
@@ -73,9 +71,7 @@
             function launchIndexModal(title, content) {
 
                 $("#indexModal .modal-title").text(title);
-
                 $("#indexModal .modal-body").text(content);
-                    
                 $('#indexModal').modal('show');
 
             }

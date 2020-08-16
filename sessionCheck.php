@@ -15,7 +15,7 @@ if (array_key_exists("id", $_SESSION)) {
 } else {
 
     header("Location: index.php");
-    
+   
 }
 
 ?>

@@ -45,20 +45,21 @@
 
             getEmailFromLS();
 
+            
+
         </script>
         
-        <!-- Email Modal -->
-        <div class="modal fade" id="loginEmailModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <!-- Index Modal -->
+        <div class="modal fade" id="indexModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">Login failed</h5>
+                    <h5 class="modal-title" id="exampleModalLongTitle"></h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    Unknown email address
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
@@ -67,33 +68,27 @@
             </div>
         </div>
 
-        <!-- Password Modal -->
-        <div class="modal fade" id="loginPasswordModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">Login failed</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    Incorrect password
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-                </div>
-                </div>
-            </div>
-        </div>
+        <script type="text/javascript">
+
+            function launchIndexModal(title, content) {
+
+                $("#indexModal .modal-title").text(title);
+
+                $("#indexModal .modal-body").text(content);
+                    
+                $('#indexModal').modal('show');
+
+            }
+
+        </script>
 
 <?php include("footer.php"); ?>
 
 <?php 
 
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
+    ini_set('display_errors', 1);
+    ini_set('display_startup_errors', 1);
+    error_reporting(E_ALL);
 
     session_start();
 
@@ -106,7 +101,6 @@ error_reporting(E_ALL);
         session_destroy();
         header("Location: index.php");
 
-    // } else if (array_key_exists("id", $_SESSION) OR array_key_exists("id", $_COOKIE)) {
     } else if ((array_key_exists("id", $_SESSION) AND $_SESSION['id']) OR (array_key_exists("id", $_COOKIE) AND $_COOKIE['id'])) {
 
         header("Location: isolations.php");
@@ -137,19 +131,37 @@ error_reporting(E_ALL);
 
                 }
 
-                // echo "<script type='text/javascript'> $(document).ready(function(){saveEmailLS();});</script>";
-                // sleep(15);
                 header("Location: isolations.php");
         
              } else {
-            
-                echo "<script type='text/javascript'> $(document).ready(function(){ $('#loginPasswordModal').modal('show');});</script>"; 
+
+            ?>
+
+                <script type='text/javascript'> $(document).ready(function(){ 
+
+                    launchIndexModal('Login Failed', 'Incorrect password');
+                    
+                    });
+                    
+                </script>
+
+                <?php
 
             }
 
         } else {
 
-            echo "<script type='text/javascript'> $(document).ready(function(){ $('#loginEmailModal').modal('show');});</script>"; 
+            ?>
+               
+            <script type='text/javascript'> $(document).ready(function(){ 
+
+                launchIndexModal('Login Failed', 'Unknown email address');
+
+                });
+
+            </script>
+                
+            <?php
 
         } 
     }

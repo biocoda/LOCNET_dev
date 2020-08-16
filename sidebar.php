@@ -9,10 +9,10 @@
 			<li class="nav-title">ISOLATIONS</li>
             <li class="nav-item"><a class="nav-link" href="isolations.php"><i id="isolationsIcon" class="nav-icon fas fa-globe"></i>All Isolations</a></li>          
 			<li class="nav-item"><a class="nav-link" href="f1isolations.php"><i id="f1isolationsIcon" class="nav-icon fas fa-industry"></i>Factory 1</a></li>
-			<li class="nav-item"><a class="nav-link" href="#f2"><i class="nav-icon fas fa-industry"></i>Factory 2</a></li>
-			<li class="nav-item"><a class="nav-link" href="#f3"><i class="nav-icon fas fa-industry"></i>Factory 3</a></li>
-			<li class="nav-item"><a class="nav-link" href="#f4"><i class="nav-icon fas fa-industry"></i>Factory 4</a></li>
-            <li class="nav-item"><a class="nav-link" href="#f4"><i class="nav-icon fas fa-globe"></i>Global Assets</a></li>
+			<li class="nav-item"><a class="nav-link" href="f2isolations.php"><i class="nav-icon fas fa-industry"></i>Factory 2</a></li>
+			<li class="nav-item"><a class="nav-link" href="f3isolations.php"><i class="nav-icon fas fa-industry"></i>Factory 3</a></li>
+			<li class="nav-item"><a class="nav-link" href="f4isolations.php"><i class="nav-icon fas fa-industry"></i>Factory 4</a></li>
+            <!-- <li class="nav-item"><a class="nav-link" href="#f4"><i class="nav-icon fas fa-globe"></i>Global Assets</a></li> -->
 		</ul>	
 	</nav>
 	<button class="sidebar-minimizer brand-minimizer" type="button"></button>

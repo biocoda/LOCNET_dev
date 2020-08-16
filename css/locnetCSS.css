@@ -9,7 +9,7 @@
     --poAppBGColor: #F0F3FS;
     --poDarkText: #23282C;
 	--greenCheck: #349745;
-	--redCheck: #df0404;
+	--redCheck: #c20000;
     --btnBgColor: #c4c4c4;
     --btnTextColor: #262626;
     --poLighterGreyColor: #d0d0d0;
@@ -23,7 +23,7 @@
 }
 
 .page-title {
-	font-size: 68pt;
+	font-size: 12pt;
 	font-weight: 600;
 }
 
@@ -54,7 +54,7 @@
 	border-color: var(--poDarkOrange);
 }
 
-.float{
+/* .float{
 	position:fixed;
 	width:60px;
 	height:60px;
@@ -65,12 +65,11 @@
 	border-radius:50px;
 	text-align:center;
 	box-shadow: 2px 2px 3px #999;
-}
+} */
 
-.my-float{
+/* .my-float{
 	margin-top:22px;
-}
-
+} */
 
 /* ISOLATION CARD CSS -------------------------*/
 
@@ -87,76 +86,25 @@
     margin-bottom: 8px;
 }
 
-.isoCard {
+.isoCard-card {
 	min-width: 20rem;
     max-width: 20rem;
     margin-top: 1.6rem;
     padding: 0;
-
 }
 
 .card-title {
     margin-bottom: 0;
 }
 
-
-
-/*----------------------------------------------*/
-
-
-
-/* .isocd-card-header {
-	padding-top: 24px;
-    background-color: #4a4a4a;
-    color: #FFFFFF;
-} */
-
-/* .isocd-card {
-	min-width: 20rem;
-    max-width: 20rem;
-    margin-top: 1.6rem;
-    padding: 0;
-} */
-
-/* .card-header-tabs {
-	border: none;
+.card-header {
+    background-color: var(--poDarkGrey);
+    color: var(--poWhiteText);
 }
 
-.nav-tabs:active {
-	border: none;
-} */
-
-/* .isolTitleHR {
-	margin-bottom: 0;
-} */
-
-/* .tab-content {
-	border: none;
-	padding: 0;
-} */
-
-/* .tab-pane {
-	padding: 0;
-} */
-
-
-/* .isocd-card-title {
-    margin-bottom: 0;
-    color: #FFFFFF;
-} */
-
-/* .isocd-card-body {
-	padding: 0;
-} */
-
-/* .isocd-card-text {
-    margin-bottom: 8px;
-} */
-
-/* .isocd-btn {
+.isocd-btn {
     margin-top: 6px;
-} */
-
+}
 
 /* ISOLATION CARD LIST AND ROWS -------------------------*/
 
@@ -174,8 +122,8 @@
 	text-align: center;
 }
 
-.isocd-fa {
-	color: grey;
+.isocd-grey {
+	color: rgb(160, 160, 160);
 }
 
 isocd-fa-ltgrey {
@@ -186,24 +134,9 @@ isocd-fa-ltgrey {
 	margin: 0;
 }
 
-.isocd-tickMark {
+.isocd-red {
 	color: var(--redCheck);
 }
-
-/* .footerText {
-    font-size: 10pt;
-} */
-
-
-/* SHOW HIDE MAIN CONTENT --------------------------*/
-
-/* .showing {
-    display: block;
-}
-
-.hidden {
-    display: none;
-} */
 
 /* ADD ISOLATION CARD CSS --------------------------*/
 
@@ -224,7 +157,6 @@ isocd-fa-ltgrey {
 .addIso-sources-btn {
     margin-bottom: 0.8rem;
     font-size: 12pt;
-/*    background-color: var(--btnBgColor);*/
     background-color: lightgray;
     color: black;
 }
@@ -255,14 +187,3 @@ isocd-fa-ltgrey {
     	margin-top: 7rem;
   }
 }
-
-/*
-.navtabs .nav-link {
-	border: none !important;
-}
-
-.card-footer {
-    bottom: 0;
-}
-*/
-

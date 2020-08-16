@@ -17,9 +17,6 @@
 	<!-- <script src="js/perfect-scrollbar.min.js"></script> -->
 	<script src="js/coreui.min.js"></script>
 	<script src="js/locnetJS.js"></script>
-
-    <link href="css/style.css" rel="stylesheet">
-	<link href="css/locnetCSS.css" rel="stylesheet">
  
 </body>
 </html>

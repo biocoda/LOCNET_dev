@@ -23,7 +23,7 @@
 }
 
 .page-title {
-	font-size: 12pt;
+	font-size: 68pt;
 	font-weight: 600;
 }
 
@@ -78,62 +78,84 @@
 	padding: 0.75rem 1.75rem 0rem 1.75rem;
 }
 
-.isocd-card-header {
-	padding-top: 24px;
-	background-color: #4a4a4a;
-}
-
-.isocd-card {
-	min-width: 20rem;
-    max-width: 20rem;
-    margin-top: 1.6rem;
-    padding: 0;
-}
-
-.card-header-tabs {
-	border: none;
-}
-
-.nav-tabs:active {
-	border: none;
-}
-
 .isolTitleHR {
 	margin-bottom: 0;
 }
-
-.tab-content {
-	border: none;
-	padding: 0;
-}
-
-.tab-pane {
-	padding: 0;
-}
-
-
-.isocd-card-title {
-	margin-bottom: 0;
-}
-
-.isocd-card-body {
-	padding: 0;
-}
-
-
 
 .isocd-divider {
 	background-color: #4A4A4A;
     margin-bottom: 8px;
 }
 
-.isocd-card-text {
-    margin-bottom: 8px;
+.isoCard {
+	min-width: 20rem;
+    max-width: 20rem;
+    margin-top: 1.6rem;
+    padding: 0;
+
 }
 
-.isocd-btn {
-    margin-top: 6px;
+.card-title {
+    margin-bottom: 0;
 }
+
+
+
+/*----------------------------------------------*/
+
+
+
+/* .isocd-card-header {
+	padding-top: 24px;
+    background-color: #4a4a4a;
+    color: #FFFFFF;
+} */
+
+/* .isocd-card {
+	min-width: 20rem;
+    max-width: 20rem;
+    margin-top: 1.6rem;
+    padding: 0;
+} */
+
+/* .card-header-tabs {
+	border: none;
+}
+
+.nav-tabs:active {
+	border: none;
+} */
+
+/* .isolTitleHR {
+	margin-bottom: 0;
+} */
+
+/* .tab-content {
+	border: none;
+	padding: 0;
+} */
+
+/* .tab-pane {
+	padding: 0;
+} */
+
+
+/* .isocd-card-title {
+    margin-bottom: 0;
+    color: #FFFFFF;
+} */
+
+/* .isocd-card-body {
+	padding: 0;
+} */
+
+/* .isocd-card-text {
+    margin-bottom: 8px;
+} */
+
+/* .isocd-btn {
+    margin-top: 6px;
+} */
 
 
 /* ISOLATION CARD LIST AND ROWS -------------------------*/
@@ -168,9 +190,9 @@ isocd-fa-ltgrey {
 	color: var(--redCheck);
 }
 
-.footerText {
+/* .footerText {
     font-size: 10pt;
-}
+} */
 
 
 /* SHOW HIDE MAIN CONTENT --------------------------*/

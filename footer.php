@@ -18,13 +18,8 @@
 	<script src="js/coreui.min.js"></script>
 	<script src="js/locnetJS.js"></script>
 
-    
-    
-    <!-- <script type="text/javascript">
-    
-        getEmailFromLS();
-    
-    </script> -->
+    <link href="css/style.css" rel="stylesheet">
+	<link href="css/locnetCSS.css" rel="stylesheet">
  
 </body>
 </html>

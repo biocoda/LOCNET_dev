@@ -54,23 +54,6 @@
 	border-color: var(--poDarkOrange);
 }
 
-/* .float{
-	position:fixed;
-	width:60px;
-	height:60px;
-	bottom:40px;
-	right:40px;
-	background-color:#0C9;
-	color:#FFF;
-	border-radius:50px;
-	text-align:center;
-	box-shadow: 2px 2px 3px #999;
-} */
-
-/* .my-float{
-	margin-top:22px;
-} */
-
 /* ISOLATION CARD CSS -------------------------*/
 
 .isocd-jtron {
@@ -138,7 +121,7 @@ isocd-fa-ltgrey {
 	color: var(--redCheck);
 }
 
-/* ADD ISOLATION CARD CSS --------------------------*/
+
 
 .addIso-card-header {
 	background-color: var(--poCardTitleBar);
@@ -148,6 +131,8 @@ isocd-fa-ltgrey {
 .addIso-card {
     min-width: 20rem;
     max-width: 20rem;
+    margin-top: 1.5rem;
+    padding: 0;
 }
 
 .addIso-btn {

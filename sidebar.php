@@ -3,7 +3,7 @@
 	<nav class="sidebar-nav">
 		<ul class="nav nav-ul">
 			<li class="nav-item"><a class="nav-link" href="index.php"><i class="nav-icon fas fa-lock"></i>LOCNET</a></li>
-			<li class="nav-item"><a class="nav-link" href="#addIsolation"><i class="nav-icon fas fa-plus"></i>Add New Isolation</a></li>
+			<li class="nav-item"><a class="nav-link" href="addIsolation.php"><i class="nav-icon fas fa-plus"></i>Add New Isolation</a></li>
             <li class="nav-item"><a class="nav-link" href="#"><i class="nav-icon fas fa-edit"></i>Edit Isolation</a></li>
 			<li class="divider"></li>
 			<li class="nav-title">ISOLATIONS</li>

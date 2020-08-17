@@ -7,7 +7,6 @@
         <div class="jumbotron isocd-jtron">
             <p class="page-title">Factory 4 Isolations</p>
             <hr class="isolTitleHR">
-            <!-- CARD ROW (3) -->
             <div class="card-deck">
 
 <?php
@@ -101,28 +100,24 @@
             <script type="text/javascript">
 
                 if (<?php echo $row['comp_air_isolated'];?> == 1) {
-
                     var caIcon = document.getElementById("air<?php echo $row['date_isolated'];?>");
                     caIcon.className = caIcon.className.replace("fa-lock-open", " fa-lock");
                     caIcon.className = caIcon.className.replace("isocd-grey", " isocd-red");
                 }
 
                 if (<?php echo $row['water_isolated'];?> == 1) {
-
                     var caIcon = document.getElementById("water<?php echo $row['date_isolated'];?>");
                     caIcon.className = caIcon.className.replace("fa-lock-open", " fa-lock");
                     caIcon.className = caIcon.className.replace("isocd-grey", " isocd-red");
                 }
 
                 if (<?php echo $row['steam_isolated'];?> == 1) {
-
                     var caIcon = document.getElementById("steam<?php echo $row['date_isolated'];?>");
                     caIcon.className = caIcon.className.replace("fa-lock-open", " fa-lock");
                     caIcon.className = caIcon.className.replace("isocd-grey", " isocd-red");
                 }
 
                 if (<?php echo $row['electricity_isolated'];?> == 1) {
-
                     var caIcon = document.getElementById("elec<?php echo $row['date_isolated'];?>");
                     caIcon.className = caIcon.className.replace("fa-lock-open", " fa-lock");
                     caIcon.className = caIcon.className.replace("isocd-grey", " isocd-red");
@@ -134,10 +129,9 @@
         }
     }   
 ?>
-
         </div><!-- CARD DECK --> 	
-    </div><!-- F1 JUMBOTRON -->	
-</div><!-- F1 MAIN CONTENT -->
+    </div><!-- JUMBOTRON -->	
+</div><!-- MAIN CONTENT -->
 
 <?php include("footer.php"); ?>
 

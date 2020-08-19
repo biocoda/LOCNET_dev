@@ -5,7 +5,7 @@
 ?>
     <div class="mainContent">
         <div class="jumbotron isocd-jtron">
-            <p class="page-title">Add devices</p>
+            <p class="page-title">Isolate devices</p>
             <hr class="isolTitleHR">
             <?php 
 
@@ -22,12 +22,16 @@
 
                         while ($deviceRow = mysqli_fetch_assoc($getDevicesQRES)) {
                             
-
-                            $steamValve1 = $deviceRow['1'];
-                            $steamValve2 = $deviceRow['2'];
-                            $waterValve = $deviceRow['3'];
-                            $airValve = $deviceRow['4'];
-                            $elecSwitch = $deviceRow['5'];
+                            print_r($deviceRow);
+                            $steamValve1 = $deviceRow['0'];
+                            $waterValve = $deviceRow['1'];
+                            $airValve = $deviceRow['2'];
+                            $elecSwitch = $deviceRow['3'];
+                            echo '<br>';
+                            echo $steamValves;
+                            echo $waterValve;
+                            echo $airValves;
+                            echo $elecSwitch;
 
                         }
 
@@ -38,10 +42,10 @@
 
                 }
 
-                $steamValves = 'SIV-108-1 & SIV-108-2';       
-                $waterValve = 'WIV-108-1';
-                $airValve = 'CAV-108-1';
-                $elecSwitch = 'EIS-108-1';
+                // $steamValves = 'SIV-108-1 & SIV-108-2';       
+                // $waterValve = 'WIV-108-1';
+                // $airValve = 'CAV-108-1';
+                // $elecSwitch = 'EIS-108-1';
 
             ?>   
 

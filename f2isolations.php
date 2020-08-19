@@ -1,6 +1,6 @@
 <?php 
-    include_once("header.php"); 
     include_once("sessionCheck.php");
+    include_once("header.php"); 
 ?>
     <div class="mainContent">
         <div class="jumbotron isocd-jtron">

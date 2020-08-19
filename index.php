@@ -8,17 +8,17 @@
 			<div class="card-body login-card-body">    
 				<form method="post">
 					<div class="form-group">
-						<label for="exampleInputEmail1">Email address</label>
+						<label for="emailFromLoginField">Email address</label>
 						<input type="email" id="loginEmail" name="emailFromLoginField" class="form-control" required>
 					</div>
 					<div class="form-group">
-						<label for="exampleInputPassword1">Password</label>
+						<label for="passwordFromLoginField">Password</label>
 						<input type="password" name="passwordFromLoginField" class="form-control" required>
 					</div>
                     <div class="form-group">
-                    <input type="checkbox" name="stayLoggedIn" value=1><label for="stayLoggedIn">&nbsp;&nbsp;&nbsp;Stay logged in?</label>
+                        <input type="checkbox" name="stayLoggedIn" value=1><label for="stayLoggedIn">&nbsp;&nbsp;&nbsp;Stay logged in?</label>
                     </div>
-					<button type="submit" name="submit" onclick="saveEmailLS()" class="btn btn-primary btn-lg">LOGIN</button>
+					    <button type="submit" name="submit" onclick="saveEmailLS()" class="btn btn-primary btn-lg">LOGIN</button>
 				</form>
 			</div>
 		</div>
@@ -110,16 +110,11 @@
         
              } else {
 
-            ?>
-
+                ?>
                 <script type='text/javascript'> $(document).ready(function(){ 
-
-                    launchIndexModal('Login Failed', 'Incorrect password');
-                    
+                    launchIndexModal('Login Failed', 'Incorrect password');  
                     });
-                    
                 </script>
-
                 <?php
 
             }
@@ -127,17 +122,11 @@
         } else {
 
             ?>
-               
             <script type='text/javascript'> $(document).ready(function(){ 
-
                 launchIndexModal('Login Failed', 'Unknown email address');
-
                 });
-
             </script>
-                
             <?php
-
         } 
     }
 ?>

@@ -130,7 +130,7 @@ isocd-fa-ltgrey {
 }
 
 .addIso-btn {
-    width: 100%;
+    width: 100%; 
 }
 
 .addIso-sources-btn {
@@ -140,6 +140,12 @@ isocd-fa-ltgrey {
     color: black;
 }
 
+.manual-entryForm {
+    width: 85% !important;
+}
+.manual-entryButton{
+    width: 15% !important;
+} 
 .sourceCard {
     min-width: 20rem;
     max-width: 20rem;
@@ -150,7 +156,7 @@ isocd-fa-ltgrey {
 
 @media (min-width: 480px) {
 
-  .addIso-card {
+    .addIso-card {
         min-width: 20rem;
         max-width: 20rem;
         margin-top: 1.5rem;

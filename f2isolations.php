@@ -1,14 +1,12 @@
 <?php 
-    include("header.php"); 
-    include("sessionCheck.php");
+    include_once("header.php"); 
+    include_once("sessionCheck.php");
 ?>
-    <!-- CARD DECK HTML-->	
     <div class="mainContent">
         <div class="jumbotron isocd-jtron">
             <p class="page-title">Factory 2 Isolations</p>
             <hr class="isolTitleHR">
             <div class="card-deck">
-
 <?php
 
     include("db_connection.php");
@@ -20,7 +18,6 @@
         while ($row = mysqli_fetch_assoc($result)) {
 
             ?>
-
             <div class="card isoCard-card">
                 <div class="card-header">
                     <h5 class="card-title"><?php echo $row['asset_name'];?></h5>
@@ -95,43 +92,35 @@
                 <hr class="isocd-divider"> 
                     <a href="#" class="btn btn-primary isocd-btn"><i class="fa fa-unlock-alt"></i>&nbsp;&nbsp;&nbsp;&nbsp;Remove Isolation</a> 
                 </div>
-            </div>
-                     
+            </div>      
             <script type="text/javascript">
-
                 if (<?php echo $row['comp_air_isolated'];?> == 1) {
                     var caIcon = document.getElementById("air<?php echo $row['date_isolated'];?>");
                     caIcon.className = caIcon.className.replace("fa-lock-open", " fa-lock");
                     caIcon.className = caIcon.className.replace("isocd-grey", " isocd-red");
                 }
-
                 if (<?php echo $row['water_isolated'];?> == 1) {
                     var caIcon = document.getElementById("water<?php echo $row['date_isolated'];?>");
                     caIcon.className = caIcon.className.replace("fa-lock-open", " fa-lock");
                     caIcon.className = caIcon.className.replace("isocd-grey", " isocd-red");
                 }
-
                 if (<?php echo $row['steam_isolated'];?> == 1) {
                     var caIcon = document.getElementById("steam<?php echo $row['date_isolated'];?>");
                     caIcon.className = caIcon.className.replace("fa-lock-open", " fa-lock");
                     caIcon.className = caIcon.className.replace("isocd-grey", " isocd-red");
                 }
-
                 if (<?php echo $row['electricity_isolated'];?> == 1) {
                     var caIcon = document.getElementById("elec<?php echo $row['date_isolated'];?>");
                     caIcon.className = caIcon.className.replace("fa-lock-open", " fa-lock");
                     caIcon.className = caIcon.className.replace("isocd-grey", " isocd-red");
                 }
-
-            </script>
-                        
+            </script>          
          <?php    
         }
     }
 ?>
-        </div><!-- CARD DECK --> 	
-    </div><!-- JUMBOTRON -->	
-</div><!-- MAIN CONTENT -->
-
-<?php include("footer.php"); ?>
+        </div>	
+    </div>
+</div>
+<?php include_once("footer.php"); ?>
 

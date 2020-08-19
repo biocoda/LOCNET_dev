@@ -1,14 +1,11 @@
 <?php 
-    include("header.php"); 
-    include("sessionCheck.php");
+    include_once("header.php"); 
+    include_once("sessionCheck.php");
 ?>
-
-<!-- CARD DECK HTML-->	
 <div class="mainContent">
     <div class="jumbotron isocd-jtron">
         <p class="page-title">All Current Site Isolations</p>
         <hr class="isolTitleHR">
-        <!-- CARD ROW (3) -->
         <div class="card-deck">
 <?php
 
@@ -30,11 +27,10 @@
         echo "There are no registered isolations";
     }
 ?>
-        </div><!-- CARD DECK --> 	
-    </div><!-- JUMBOTRON -->	
-</div><!-- MAIN CONTENT -->
-
-<?php include("footer.php"); ?>
+        </div>
+    </div>
+</div>
+<?php include_once("footer.php"); ?>
 
 
 

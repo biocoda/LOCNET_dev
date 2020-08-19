@@ -1,6 +1,4 @@
-<?php include("header.php"); ?>
-
-<!-- TITLE and LOGIN --> 
+<?php include_once("header.php"); ?>
 <div class="mainContent" id="home">        
 	<div class="jumbotron">
 		<h1 class="display-4">LOCNET</h1>
@@ -22,32 +20,20 @@
                     </div>
 					<button type="submit" name="submit" onclick="saveEmailLS()" class="btn btn-primary btn-lg">LOGIN</button>
 				</form>
-			</div><!-- CARD BODY --> 
-		</div><!-- LOGIN CARD --> 
+			</div>
+		</div>
         <hr> 
-
         <script type="text/javascript">
-
             function saveEmailLS() {
-
                 localStorage.setItem('lastLoginEmail', document.getElementById("loginEmail").value);
-
             }
-
             function getEmailFromLS() {
-
                 if (localStorage.getItem('lastLoginEmail')) {
-
                     document.getElementById("loginEmail").value = localStorage.getItem('lastLoginEmail');
-
                 }
             }
-
             getEmailFromLS();
-
         </script>
-        
-        <!-- Index Modal -->
         <div class="modal fade" id="indexModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
@@ -65,21 +51,14 @@
                 </div>
             </div>
         </div>
-
         <script type="text/javascript">
-
             function launchIndexModal(title, content) {
-
                 $("#indexModal .modal-title").text(title);
                 $("#indexModal .modal-body").text(content);
                 $('#indexModal').modal('show');
-
             }
-
         </script>
-
-<?php include("footer.php"); ?>
-
+<?php include("footer.php");?>
 <?php 
 
     ini_set('display_errors', 1);
@@ -162,9 +141,8 @@
         } 
     }
 ?>
-
-	</div><!-- JUMBOTRON -->   
-</div><!-- MAIN CONTENT --> 
+	</div> 
+</div>
 
 
 

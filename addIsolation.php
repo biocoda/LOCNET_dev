@@ -1,8 +1,7 @@
 <?php 
-    include("header.php"); 
-    include("sessionCheck.php");
+    include_once("header.php"); 
+    include_once("sessionCheck.php");
 ?>
-    <!-- CARD DECK HTML-->	
     <div class="mainContent">
         <div class="jumbotron isocd-jtron">
             <p class="page-title">Add Isolation</p>
@@ -10,7 +9,6 @@
             <div class="card addIso-card">
                 <h5 class="card-header text-white addIso-card-header">Select Asset to Isolate</h5>
                 <div class="card-body">
-                    <!-- <p class="card-text">Scan QR code on asset</p> -->
                     <form method="post">
                     <div class="form-group">
                         <button type="submitAssetQRCode" name="submitAssetQRCode" class="btn btn-primary addIso-btn"><i class="fas fa-qrcode"></i>&#160;&#160;Scan Asset QR Code</button>
@@ -22,8 +20,6 @@
                     </form>
                 </div>
             </div>
-
-
 <?php
 
     include("db_connection.php");
@@ -37,9 +33,7 @@
         }
     }   
 ?>
-	
     </div>	
 </div>
-
-<?php include("footer.php"); ?>
+<?php require_once("footer.php"); ?>
 

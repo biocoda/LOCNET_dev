@@ -72,32 +72,26 @@
     <hr class="isocd-divider"> 
         <a href="#" class="btn btn-primary isocd-btn"><i class="fa fa-unlock-alt"></i>&nbsp;&nbsp;&nbsp;&nbsp;Remove Isolation</a> 
     </div>
-</div>
-            
+</div>        
 <script type="text/javascript">
-
     if (<?php echo $row['comp_air_isolated'];?> == 1) {
         var caIcon = document.getElementById("air<?php echo $row['date_isolated'];?>");
         caIcon.className = caIcon.className.replace("fa-lock-open", " fa-lock");
         caIcon.className = caIcon.className.replace("isocd-grey", " isocd-red");
     }
-
     if (<?php echo $row['water_isolated'];?> == 1) {
         var caIcon = document.getElementById("water<?php echo $row['date_isolated'];?>");
         caIcon.className = caIcon.className.replace("fa-lock-open", " fa-lock");
         caIcon.className = caIcon.className.replace("isocd-grey", " isocd-red");
     }
-
     if (<?php echo $row['steam_isolated'];?> == 1) {
         var caIcon = document.getElementById("steam<?php echo $row['date_isolated'];?>");
         caIcon.className = caIcon.className.replace("fa-lock-open", " fa-lock");
         caIcon.className = caIcon.className.replace("isocd-grey", " isocd-red");
     }
-
     if (<?php echo $row['electricity_isolated'];?> == 1) {
         var caIcon = document.getElementById("elec<?php echo $row['date_isolated'];?>");
         caIcon.className = caIcon.className.replace("fa-lock-open", " fa-lock");
         caIcon.className = caIcon.className.replace("isocd-grey", " isocd-red");
     }
-
 </script>

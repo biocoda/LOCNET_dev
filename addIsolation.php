@@ -11,8 +11,10 @@
                 <div class="card-body">
                     <form method="post">
                         <div class="form-group">
-                            <button type="submitAssetQRCode" name="submitAssetQRCode" class="btn btn-primary addIso-btn"><i class="fas fa-qrcode"></i>&#160;&#160;Scan Asset QR Code</button>
+                            <button class="btn btn-primary addIso-btn"><i class="fas fa-qrcode"></i>&#160;&#160;Scan Asset QR Code</button>
                         </div>
+                    </form>
+                    <form method="post">
                         <div class="form-group form-inline">
                             <input type="text" id="assetID" name="assetIDfromForm" class="form-control manual-entryForm" required placeholder="Enter Asset Name">
                             <button type="submit" name="submit" class="btn manual-entryButton"><i class="fas fa-search"></i></button>

@@ -161,6 +161,11 @@ html:not([dir="rtl"]) .sidebar-show.sidebar-fixed .main, html:not([dir="rtl"]) .
     margin-left: 0;
 }
 
+.devcd-divider {
+	background-color: #c2c2c2;
+    margin: 0;
+}
+
 /* RESPONSIVE CSS
 -------------------------------------------------- */
 /* anything over 480px the following styles will apply*/

@@ -4,7 +4,7 @@
 ?>
 <div class="mainContent">
     <div class="jumbotron isocd-jtron">
-        <p class="page-title">All Current Site Isolations</p>
+        <p class="page-title text-nowrap">All Current Site Isolations</p>
         <hr class="isolTitleHR">
         <div class="card-deck">
 <?php
@@ -17,14 +17,13 @@
 
         while ($row = mysqli_fetch_assoc($result)) {
 
-            ?>
-
-            <?php include("isolationCard.php"); ?>
-
-         <?php    
+            include("isolationCard.php");
+   
         }
     } else {
+
         echo "There are no registered isolations";
+
     }
 ?>
         </div>

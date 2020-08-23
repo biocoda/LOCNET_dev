@@ -24,7 +24,8 @@
 
 .page-title {
 	font-size: 12pt;
-	font-weight: 600;
+    font-weight: 600;
+    
 }
 
 /* LOGIN CARD ----------------------------*/
@@ -94,8 +95,10 @@
 }
 
 .isocd-fa-col1{
-	padding: 0;
-	text-align: center;
+    padding: 0;
+    padding-top: 4px;
+    text-align: center;
+    
 }
 
 .isocd-grey {
@@ -120,11 +123,15 @@ isocd-fa-ltgrey {
 }
 
 .addIso-card {
+    /* min-width: 20rem;
+    max-width: 20rem; */
     margin-top: 1.5rem;
     padding: 0;
 }
 
 .isoCard-card {
+    /* min-width: 20rem;
+    max-width: 20rem; */
     margin-top: 1.5rem;
     padding: 0;
 }
@@ -151,10 +158,17 @@ isocd-fa-ltgrey {
     max-width: 20rem;
 }
 
+.mainContent {
+    overflow: hidden;
+}
+
+.page-title {
+
+}
 /* RESPONSIVE CSS
 -------------------------------------------------- */
-
-@media (min-width: 480px) {
+/* anything over 480px the following styles will apply*/
+@media (min-width: 480px) { 
 
     .addIso-card {
         min-width: 20rem;
@@ -169,3 +183,8 @@ isocd-fa-ltgrey {
         padding: 0;
     }
 }
+
+
+
+
+

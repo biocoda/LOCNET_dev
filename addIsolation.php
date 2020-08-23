@@ -1,7 +1,6 @@
 <?php 
     include_once("sessionCheck.php");
     include_once("header.php"); 
-    
 ?>
     <div class="mainContent">
         <div class="jumbotron isocd-jtron">
@@ -76,6 +75,7 @@
 
                 $modalOPstring = "You have selected ".$row['asset_name']."-".$row["description"]." is this correct?";
                 $_SESSION['currentAssetID'] = $row['asset_id'];
+                $_SESSION['currentAssetDesc'] = $row['asset_name']."-".$row["description"];
 
                 ?>
                 <script type='text/javascript'> $(document).ready(function(){ 

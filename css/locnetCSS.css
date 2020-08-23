@@ -123,15 +123,13 @@ isocd-fa-ltgrey {
 }
 
 .addIso-card {
-    /* min-width: 20rem;
-    max-width: 20rem; */
+   
     margin-top: 1.5rem;
     padding: 0;
 }
 
 .isoCard-card {
-    /* min-width: 20rem;
-    max-width: 20rem; */
+   
     margin-top: 1.5rem;
     padding: 0;
 }
@@ -148,23 +146,21 @@ isocd-fa-ltgrey {
 }
 
 .manual-entryForm {
-    width: 85% !important;
+    width: 80% !important;
 }
 .manual-entryButton{
-    width: 15% !important;
+    height: 35px;
+    width: 20%;
 } 
 .sourceCard {
     min-width: 20rem;
     max-width: 20rem;
 }
 
-.mainContent {
-    overflow: hidden;
+html:not([dir="rtl"]) .sidebar-show.sidebar-fixed .main, html:not([dir="rtl"]) .sidebar-show.sidebar-fixed .app-footer {
+    margin-left: 0;
 }
 
-.page-title {
-
-}
 /* RESPONSIVE CSS
 -------------------------------------------------- */
 /* anything over 480px the following styles will apply*/
@@ -183,6 +179,8 @@ isocd-fa-ltgrey {
         padding: 0;
     }
 }
+
+
 
 
 

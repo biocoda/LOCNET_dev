@@ -5,55 +5,57 @@
 ?>
     <div class="mainContent">
         <div class="jumbotron isocd-jtron">
-            <p class="page-title">Isolate devices</p>
+            <p class="page-title">Available devices for <?php echo $_SESSION['currentAssetDesc']; ?></p>
             <hr class="isolTitleHR">
             <?php 
 
                 $assetIDForQry = $_SESSION['currentAssetID'];
-                print_r($idFromPrevPage);
 
                 if ($_SESSION['currentAssetID']) {
 
                     include("db_connection.php");
 
-                    $getDeviceQry = "SELECT `device_name`, `source` FROM `devices` WHERE `ASSETS_asset_id` = $assetIDForQry";
-                    
+                    $getDeviceQry = "SELECT `source`, `device_name` FROM `devices` WHERE `ASSETS_asset_id` = $assetIDForQry";
+                 
                     if ($getDevicesQRES = mysqli_query($link, $getDeviceQry)) {
 
                         while ($deviceRow = mysqli_fetch_assoc($getDevicesQRES)) {
-                            
-                            print_r($deviceRow);
-                            $steamValve1 = $deviceRow['0'];
-                            $waterValve = $deviceRow['1'];
-                            $airValve = $deviceRow['2'];
-                            $elecSwitch = $deviceRow['3'];
-                            echo '<br>';
-                            echo $steamValves;
-                            echo $waterValve;
-                            echo $airValves;
-                            echo $elecSwitch;
 
+                            switch ($deviceRow["source"]) {
+
+                                case ($deviceRow["source"] == 'Steam') :
+                                    $steamDevice = $deviceRow["device_name"];
+                                    break;
+
+                                case ($deviceRow["source"] == 'Water') :
+                                    $waterDevice = $deviceRow["device_name"];
+                                    break;
+
+                                case ($deviceRow["source"] == 'CDA') :
+                                    $cdaDevice = $deviceRow["device_name"];
+                                    break;
+
+                                case ($deviceRow["source"] == 'Electricity') :
+                                    $elecDevice = $deviceRow["device_name"];
+                                    break;
+                            }
+                            
                         }
 
                     }
+
                 } else {
 
                     echo "error with getting session id from previous page";
 
                 }
-
-                // $steamValves = 'SIV-108-1 & SIV-108-2';       
-                // $waterValve = 'WIV-108-1';
-                // $airValve = 'CAV-108-1';
-                // $elecSwitch = 'EIS-108-1';
-
             ?>   
 
             <div class="card addIso-card">
-            <h5 class="card-header text-white addIso-card-header">Select Devices to Isolate</h5>
+            <h5 class="card-header text-white addIso-card-header">Select devices to isolate</h5>
                 <div class="card-body">
                     <h5>Steam:</h5>
-                    <p>Close <?php echo $steamValves; ?></p>
+                    <p>Close <?php echo $steamDevice; ?></p>
                     <form method="post">
                         <div class="form-group">
                             <button type="submitAssetQRCode" name="submitAssetQRCode" class="btn btn-primary addIso-btn"><i class="fas fa-qrcode"></i>&#160;&#160;Scan Device QR Code</button>
@@ -66,7 +68,7 @@
                     <hr class="isocd-divider"> 
                     <br>
                     <h5>Water:</h5>
-                    <p>Close <?php echo $waterValve; ?></p>
+                    <p>Close <?php echo $waterDevice; ?></p>
                     <form method="post">
                         <div class="form-group">
                             <button type="" name="submitAssetQRCode" class="btn btn-primary addIso-btn"><i class="fas fa-qrcode"></i>&#160;&#160;Scan Device QR Code</button>
@@ -79,7 +81,7 @@
                     <hr class="isocd-divider"> 
                     <br>
                     <h5>Compressed air:</h5>
-                    <p>Close <?php echo $airValve; ?></p>
+                    <p>Close <?php echo $cdaDevice; ?></p>
                     <form method="post">
                         <div class="form-group">
                             <button type="submitAssetQRCode" name="submitAssetQRCode" class="btn btn-primary addIso-btn"><i class="fas fa-qrcode"></i>&#160;&#160;Scan Device QR Code</button>
@@ -92,7 +94,7 @@
                     <hr class="isocd-divider"> 
                     <br>
                     <h5>Electrical:</h5>
-                    <p>Close <?php echo $elecSwitch; ?></p>
+                    <p>Close <?php echo $elecDevice; ?></p>
                     <form method="post">
                         <div class="form-group">
                             <button type="submitAssetQRCode" name="submitAssetQRCode" class="btn btn-primary addIso-btn"><i class="fas fa-qrcode"></i>&#160;&#160;Scan Device QR Code</button>

@@ -11,7 +11,7 @@
 
     include("db_connection.php");
 
-    $f4IsolationsQuery = "SELECT ISOLATIONS.*, `user_firstName`, `user_lastName`, `user_telephone`, `asset_name`, `location`, `description`\n". "FROM `ISOLATIONS` \n". "JOIN USERS ON `USERS_user_id` = `user_id` \n". "JOIN ASSETS ON `ASSETS_asset_id` = `asset_id`\n". "WHERE `date_removed` IS NULL AND `location` = \"F4\"\n". "ORDER BY `date_isolated` DESC";
+    $f4IsolationsQuery = "SELECT isolations.*, `user_firstName`, `user_lastName`, `user_telephone`, `asset_name`, `location`, `description` FROM `isolations` JOIN users ON `USERS_user_id` = `user_id` JOIN assets ON `ASSETS_asset_id` = `asset_id` WHERE `date_removed` IS NULL AND `location` = \"F4\" ORDER BY `date_isolated` DESC";
 
     if ($result = mysqli_query($link, $f4IsolationsQuery)) {
 

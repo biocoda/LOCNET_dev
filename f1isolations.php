@@ -17,8 +17,6 @@
 
         while ($row = mysqli_fetch_assoc($result)) {
 
-            print_r($row);
-
             include("isolationCard.php");
         }
     } else {

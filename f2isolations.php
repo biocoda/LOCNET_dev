@@ -10,7 +10,7 @@
 <?php
     include("db_connection.php");
 
-    $f2IsolationsQuery = "SELECT isolations.*, `user_firstName`, `user_lastName`, `user_telephone`, `asset_name`, `location`, `description` FROM `isolations` JOIN users ON `USERS_user_id` = `user_id` JOIN assets ON `ASSETS_asset_id` = `asset_id` WHERE `date_removed` IS NULL AND `location` = \"F2\" ORDER BY `date_isolated` DESC";
+    $f2IsolationsQuery = "SELECT isolations.*, `user_firstName`, `user_lastName`, `user_telephone`, `asset_name`, `location`, `description` FROM `isolations` JOIN users ON `users_user_id` = `user_id` JOIN assets ON `assets_asset_id` = `asset_id` WHERE `date_removed` IS NULL AND `location` = \"F2\" ORDER BY `date_isolated` DESC";
 
     if ($result = mysqli_query($link, $f2IsolationsQuery)) {
 

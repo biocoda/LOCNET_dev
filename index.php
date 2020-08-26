@@ -67,6 +67,10 @@
 
     session_start();
 
+    function goToPage($url) {
+        echo '<script language="javascript">window.location.href ="'.$url.'"</script>';
+    }
+
     if (array_key_exists("logout", $_GET)) {
 
         unset($_SESSION);
@@ -74,12 +78,12 @@
         $_COOKIE["id"] = "";
 
         session_destroy();
-        header("Location: index.php");
+
+        goToPage('index.php');
 
     } else if ((array_key_exists("id", $_SESSION) AND $_SESSION['id']) OR (array_key_exists("id", $_COOKIE) AND $_COOKIE['id'])) {
 
-        header("Location: isolations.php");
-
+        goToPage('isolations.php');
     }
 
     if (array_key_exists("submit", $_POST)) {
@@ -90,11 +94,13 @@
 
         $result = mysqli_query($link, $userQuery);
 
-        $row = mysqli_fetch_array($result);
+        $row = mysqli_fetch_array($result);        
 
         if (isset($row)) {
 
             $hashedPass = md5(md5($row['user_id']).$_POST['passwordFromLoginField']);
+
+            echo $hashedPass;
 
             if ($hashedPass == $row['user_password']) {
             
@@ -103,11 +109,10 @@
                 if (isset($_POST['stayLoggedIn']) AND $_POST['stayLoggedIn'] == '1') {
 
                     setcookie("id", row['user_id'], time() + 60*60*24);
-
                 }
 
-                header("Location: isolations.php");
-        
+                goToPage('isolations.php');
+
              } else {
 
                 ?>
@@ -116,7 +121,6 @@
                     });
                 </script>
                 <?php
-
             }
 
         } else {

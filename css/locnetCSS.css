@@ -2,7 +2,7 @@
     --poOrange: #E58323;
 	--poDarkOrange: #C36000;
     --poDarkGrey: #313131;
-	--poCardTitleBar: #4a4a4a;
+	--poCardTitleBar: #2f353A;
     --poLightGrey: #979797;
     --poWhiteText: #FFFFFF;
     --poOrangeText: #F59713;
@@ -75,8 +75,8 @@
 }
 
 .card-header {
-    background-color: var(--poDarkGrey);
     color: var(--poWhiteText);
+    background-color: var(--poCardTitleBar);
 }
 
 .isocd-btn {
@@ -115,11 +115,6 @@ isocd-fa-ltgrey {
 
 .isocd-red {
 	color: var(--redCheck);
-}
-
-.addIso-card-header {
-	background-color: var(--poCardTitleBar);
-    font-size: 12pt;
 }
 
 .addIso-card {

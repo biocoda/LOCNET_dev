@@ -7,7 +7,7 @@
             <p class="page-title">Add Isolation</p>
             <hr class="isolTitleHR">
             <div class="card addIso-card">
-                <h5 class="card-header text-white addIso-card-header">Select Asset to Isolate</h5>
+                <p class="card-header addIso-card-header">Select Asset to Isolate</p>
                 <div class="card-body">
                     <form method="post">
                         <div class="form-group">
@@ -16,7 +16,7 @@
                     </form>
                     <form method="post">
                         <div class="form-group form-inline">
-                            <input type="text" id="assetID" name="assetIDfromForm" class="form-control manual-entryForm" required placeholder="Enter Asset Name">
+                            <input type="text" id="assetID" name="assetIDfromForm" class="form-control manual-entryForm" required placeholder="Enter Asset ID">
                             <button type="submit" name="submit" class="btn manual-entryButton"><i class="fas fa-search"></i></button>
                         </div>
                     </form>

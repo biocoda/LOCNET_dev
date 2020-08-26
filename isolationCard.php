@@ -1,6 +1,6 @@
 <div class="card isoCard-card">
-    <div class="card-header">
-        <h5 class="card-title"><?php echo $row['asset_name'];?></h5>
+    <div class="card-header addIso-card-header">
+        <p class="card-title"><?php echo $row['asset_name'];?></p>
         <p class="card-text"><?php echo $row['description'];?></p>
     </div>
     <div class="card-body">
@@ -72,32 +72,26 @@
     <hr class="isocd-divider"> 
         <a href="#" class="btn btn-primary isocd-btn"><i class="fa fa-unlock-alt"></i>&nbsp;&nbsp;&nbsp;&nbsp;Remove Isolation</a> 
     </div>
-</div>
-            
+</div>        
 <script type="text/javascript">
-
-    if (<?php echo $row['comp_air_isolated'];?> == 1) {
-        var caIcon = document.getElementById("air<?php echo $row['date_isolated'];?>");
+    function setLockIcons() {
         caIcon.className = caIcon.className.replace("fa-lock-open", " fa-lock");
         caIcon.className = caIcon.className.replace("isocd-grey", " isocd-red");
     }
-
+    if (<?php echo $row['cda_isolated'];?> == 1) {
+        var caIcon = document.getElementById("air<?php echo $row['date_isolated'];?>");
+        setLockIcons();
+    }
     if (<?php echo $row['water_isolated'];?> == 1) {
         var caIcon = document.getElementById("water<?php echo $row['date_isolated'];?>");
-        caIcon.className = caIcon.className.replace("fa-lock-open", " fa-lock");
-        caIcon.className = caIcon.className.replace("isocd-grey", " isocd-red");
+        setLockIcons();
     }
-
     if (<?php echo $row['steam_isolated'];?> == 1) {
         var caIcon = document.getElementById("steam<?php echo $row['date_isolated'];?>");
-        caIcon.className = caIcon.className.replace("fa-lock-open", " fa-lock");
-        caIcon.className = caIcon.className.replace("isocd-grey", " isocd-red");
+        setLockIcons();
     }
-
-    if (<?php echo $row['electricity_isolated'];?> == 1) {
+    if (<?php echo $row['elec_isolated'];?> == 1) {
         var caIcon = document.getElementById("elec<?php echo $row['date_isolated'];?>");
-        caIcon.className = caIcon.className.replace("fa-lock-open", " fa-lock");
-        caIcon.className = caIcon.className.replace("isocd-grey", " isocd-red");
+        setLockIcons();
     }
-
 </script>

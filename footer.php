@@ -4,7 +4,7 @@
 <!-- Footer -->
 <footer class="app-footer">
     <div>
-        <span>LOCNET&#160;v2.0&#160;&copy;&#160;2020&#160;STU51272</span>
+        <span>LOCNET&#160;v1.0&#160;&copy;&#160;2020&#160;STU51272</span>
     </div>
 </footer>
 

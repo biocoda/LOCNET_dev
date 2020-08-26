@@ -2,7 +2,7 @@
     --poOrange: #E58323;
 	--poDarkOrange: #C36000;
     --poDarkGrey: #313131;
-	--poCardTitleBar: #4a4a4a;
+	--poCardTitleBar: #2f353A;
     --poLightGrey: #979797;
     --poWhiteText: #FFFFFF;
     --poOrangeText: #F59713;
@@ -24,7 +24,8 @@
 
 .page-title {
 	font-size: 12pt;
-	font-weight: 600;
+    font-weight: 600;
+    
 }
 
 /* LOGIN CARD ----------------------------*/
@@ -74,8 +75,8 @@
 }
 
 .card-header {
-    background-color: var(--poDarkGrey);
     color: var(--poWhiteText);
+    background-color: var(--poCardTitleBar);
 }
 
 .isocd-btn {
@@ -94,8 +95,10 @@
 }
 
 .isocd-fa-col1{
-	padding: 0;
-	text-align: center;
+    padding: 0;
+    padding-top: 4px;
+    text-align: center;
+    
 }
 
 .isocd-grey {
@@ -114,17 +117,14 @@ isocd-fa-ltgrey {
 	color: var(--redCheck);
 }
 
-.addIso-card-header {
-	background-color: var(--poCardTitleBar);
-    font-size: 12pt;
-}
-
 .addIso-card {
+   
     margin-top: 1.5rem;
     padding: 0;
 }
 
 .isoCard-card {
+   
     margin-top: 1.5rem;
     padding: 0;
 }
@@ -141,20 +141,34 @@ isocd-fa-ltgrey {
 }
 
 .manual-entryForm {
-    width: 85% !important;
+    width: 80% !important;
 }
 .manual-entryButton{
-    width: 15% !important;
+    height: 35px;
+    width: 20%;
 } 
 .sourceCard {
     min-width: 20rem;
     max-width: 20rem;
 }
 
+.lock-dark {
+    color: var(--poDarkGrey);
+}
+
+html:not([dir="rtl"]) .sidebar-show.sidebar-fixed .main, html:not([dir="rtl"]) .sidebar-show.sidebar-fixed .app-footer {
+    margin-left: 0;
+}
+
+.devcd-divider {
+	background-color: #c2c2c2;
+    margin: 0;
+}
+
 /* RESPONSIVE CSS
 -------------------------------------------------- */
-
-@media (min-width: 480px) {
+/* anything over 480px the following styles will apply*/
+@media (min-width: 480px) { 
 
     .addIso-card {
         min-width: 20rem;
@@ -169,3 +183,10 @@ isocd-fa-ltgrey {
         padding: 0;
     }
 }
+
+
+
+
+
+
+

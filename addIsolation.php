@@ -1,45 +1,105 @@
 <?php 
-    include("header.php"); 
-    include("sessionCheck.php");
+    include_once("sessionCheck.php");
+    include_once("header.php"); 
 ?>
-    <!-- CARD DECK HTML-->	
     <div class="mainContent">
         <div class="jumbotron isocd-jtron">
             <p class="page-title">Add Isolation</p>
             <hr class="isolTitleHR">
             <div class="card addIso-card">
-                <h5 class="card-header text-white addIso-card-header">Select Asset to Isolate</h5>
+                <p class="card-header addIso-card-header">Select Asset to Isolate</p>
                 <div class="card-body">
-                    <!-- <p class="card-text">Scan QR code on asset</p> -->
                     <form method="post">
-                    <div class="form-group">
-                        <button type="submitAssetQRCode" name="submitAssetQRCode" class="btn btn-primary addIso-btn"><i class="fas fa-qrcode"></i>&#160;&#160;Scan Asset QR Code</button>
-                    </div>
-					<div class="form-inline asset-inline-form">
-						<input type="text" id="assetID" name="assetIDfromForm" class="form-control manual-entryForm" required placeholder="Enter Asset ID">
-                        <button type="submit-asset" name="submit" onclick="saveEmailLS()" class="btn manual-entryButton"><i class="fas fa-search"></i></button>
-                    </div>
+                        <div class="form-group">
+                            <button class="btn btn-primary addIso-btn"><i class="fas fa-qrcode"></i>&#160;&#160;Scan Asset QR Code</button>
+                        </div>
+                    </form>
+                    <form method="post">
+                        <div class="form-group form-inline">
+                            <input type="text" id="assetID" name="assetIDfromForm" class="form-control manual-entryForm" required placeholder="Enter Asset ID">
+                            <button type="submit" name="submit" class="btn manual-entryButton"><i class="fas fa-search"></i></button>
+                        </div>
                     </form>
                 </div>
             </div>
 
-
+            <div class="modal fade" id="notFound" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title"></h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>    
+            </div>    
+            <div class="modal fade" id="assetFound" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title"></h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="window.location.href = 'addDevices.php';">Yes</button>
+                            <button type="button" class="btn btn-primary" data-dismiss="modal">No</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+<?php include_once("footer.php"); ?>
 <?php
 
-    include("db_connection.php");
+    if (array_key_exists("submit", $_POST)) {
 
-    $f4IsolationsQuery = "SELECT ISOLATIONS.*, `user_firstName`, `user_lastName`, `user_telephone`, `asset_name`, `location`, `description`\n". "FROM `ISOLATIONS` \n". "JOIN USERS ON `USERS_user_id` = `user_id` \n". "JOIN ASSETS ON `ASSETS_asset_id` = `asset_id`\n". "WHERE `date_removed` IS NULL AND `location` = \"F4\"\n". "ORDER BY `date_isolated` DESC";
+        $post_assetID = $_POST['assetIDfromForm'];
 
-    if ($result = mysqli_query($link, $f4IsolationsQuery)) {
+        include("db_connection.php");
 
-        while ($row = mysqli_fetch_assoc($result)) {
-             
-        }
-    }   
+        $getAsset = "SELECT * FROM `assets` WHERE `asset_id` = $post_assetID";
+
+        if ($assetQRES = mysqli_query($link, $getAsset)) {
+
+            $row = mysqli_fetch_assoc($assetQRES);
+
+            if (isset($row)) {
+
+                $modalOPstring = "You have selected ".$row['asset_name']."-".$row["description"]." is this correct?";
+                $_SESSION['currentAssetID'] = $row['asset_id'];
+                $_SESSION['currentAssetDesc'] = $row['asset_name']."-".$row["description"];
+
+                ?>
+                <script type='text/javascript'> $(document).ready(function(){ 
+                    launchAF('Are you sure?', '<?php echo $modalOPstring ?>');
+                    });
+                </script>
+                <?php
+
+                } else {
+
+                ?>
+                <script type='text/javascript'> $(document).ready(function(){ 
+                    launchNF('Unknown Asset', 'Asset not found');
+                    });
+                </script>
+                <?php
+
+                }
+        } // asset query result
+    } // array key exists
 ?>
-	
     </div>	
 </div>
 
-<?php include("footer.php"); ?>
 

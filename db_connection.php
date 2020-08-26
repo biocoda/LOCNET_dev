@@ -2,7 +2,7 @@
 
 $user = "root";
 $password = "root";
-$db = "locnet_dev";
+$db = "locnet_db";
 $host = "localhost";
 $port = 3306;
 $link = mysqli_init();
@@ -22,4 +22,19 @@ if (!$success) {
 
     }
 
-?>
+
+// real connection
+// $serverName = "shareddb1c.hosting.stackcp.net";
+//     $userName = "locnet_dev_01-3633747e";
+//     $password = "h2207sak3p";
+//     $dbName = "locnet_dev_01-3633747e";
+
+//     $link = new mysqli($serverName, $userName, $password, $dbName);
+
+ 
+//     if ($link->connect_error) {
+//     die("Connection failed: " . $link->connect_error);
+//     }
+//     echo "Connected successfully";
+
+    ?>

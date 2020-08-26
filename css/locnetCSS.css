@@ -152,6 +152,10 @@ isocd-fa-ltgrey {
     max-width: 20rem;
 }
 
+.lock-dark {
+    color: var(--poDarkGrey);
+}
+
 html:not([dir="rtl"]) .sidebar-show.sidebar-fixed .main, html:not([dir="rtl"]) .sidebar-show.sidebar-fixed .app-footer {
     margin-left: 0;
 }

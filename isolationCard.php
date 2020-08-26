@@ -87,7 +87,6 @@
         setLockIcons();
     }
     if (<?php echo $row['steam_isolated'];?> == 1) {
-        console.log('steam isolated');
         var caIcon = document.getElementById("steam<?php echo $row['date_isolated'];?>");
         setLockIcons();
     }

@@ -1,4 +1,7 @@
-<?php include_once("header.php"); ?>
+<?php
+    session_start(); 
+    include_once("header.php"); 
+?>
 <div class="mainContent" id="home">        
 	<div class="jumbotron">
 		<h1 class="display-4">LOCNET</h1>
@@ -58,14 +61,11 @@
                 $('#indexModal').modal('show');
             }
         </script>
-<?php include("footer.php");?>
 <?php 
 
     ini_set('display_errors', 1);
     ini_set('display_startup_errors', 1);
     error_reporting(E_ALL);
-
-    session_start();
 
     function goToPage($url) {
         echo '<script language="javascript">window.location.href ="'.$url.'"</script>';
@@ -137,7 +137,7 @@
 	</div> 
 </div>
 
-
+<?php include("footer.php");?>
 
 
 

@@ -1,7 +1,7 @@
 <?php   
 
-$user = "root";
-$password = "root";
+$user = "paul";
+$password = "paul";
 $db = "locnet_db";
 $host = "localhost";
 $port = 3306;

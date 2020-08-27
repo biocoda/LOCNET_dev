@@ -61,7 +61,8 @@
                 $('#indexModal').modal('show');
             }
         </script>
-<?php 
+<?php include("footer.php");?>
+<?php
 
     ini_set('display_errors', 1);
     ini_set('display_startup_errors', 1);
@@ -100,7 +101,7 @@
 
             $hashedPass = md5(md5($row['user_id']).$_POST['passwordFromLoginField']);
 
-            echo $hashedPass;
+            // echo $hashedPass;
 
             if ($hashedPass == $row['user_password']) {
             
@@ -136,8 +137,6 @@
 ?>
 	</div> 
 </div>
-
-<?php include("footer.php");?>
 
 
 

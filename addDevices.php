@@ -11,10 +11,10 @@
                 $currentAsset = $_SESSION['currentAssetID'];
                 $currentUser = $_SESSION['id'];
 
-                echo $currentUser;
-                echo "<br>";
-                echo $currentAsset;
-                echo "<br>";
+                // echo $currentUser;
+                // echo "<br>";
+                // echo $currentAsset;
+                // echo "<br>";
 
                 if ($_SESSION['currentAssetID']) {
 
@@ -34,28 +34,9 @@
 
                 }
 
-                // include('isolation_cl.php');
-
-                // $currentIsolation = new Isolation();
-
-                // $currentIsolation->set_uid($_SESSION['id']);
-                // $currentIsolation->set_aid($_SESSION['currentAssetID']);
-
-                // print_r($currentIsolation);
-
-
-	            // $iso_INSERT = "INSERT INTO `isolations` (`isolation_id`, `ASSETS_asset_id`, `USERS_user_id`, `date_isolated`, `date_removed`, `steam_isolated`, `water_isolated`, `electricity_isolated`, `comp_air_isolated`, `caustic_isolated`, `acid_isolated`, `glycol_isolated`) \n"."VALUES (NULL, \'3\', \'3\', \'2020-08-13 13:39:40\', NULL, \'1\', \'1\', \'1\', \'1\', \'0\', \'0\', \'0\')";
-
                 $currentIso = array('uid' => $_SESSION['id'], 'aid' => $_SESSION['currentAssetID'], 'di' => '', 'dr' => '', 'sIso' => 0, 'wIso' => 0, 'cIso' => 0, 'eIso' => 0);
 
-
-                // echo $currentIso['uid'];
-                echo '<br>';
-                // echo $currentIso['aid'];
-
-                // $currentIso['sIso'] = 1;
-
-                // echo $currentIso['sIso'];
+                print_r($currentIso);
 
             ?>   
             <div class="card addIso-card">
@@ -164,17 +145,6 @@
                 lkIcon.className = lkIcon.className.replace("isocd-red", " lock-black");
                 console.log('reset working');
             }
-            function UISwitch() {
-
-                switch () {
-
-                    case 
-
-
-
-                }
-            }
-
         </script>
 
         <?php include_once("footer.php"); 
@@ -223,10 +193,10 @@
             switch ($currentIso['sIso']) {
 
                 case 0:
-                    echo "-----------------------------------------is set to 0";
+                    echo "-------------------------------------------------- stIso is set to 0";
                     break;
                 case 1:
-                    echo "-----------------------------------------is set to 1";
+                    echo "---------------------------------------------------- stIso is set to 1";
                     break;
 
             }

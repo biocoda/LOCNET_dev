@@ -21,7 +21,7 @@
                     <div class="form-group">
                         <input type="checkbox" name="stayLoggedIn" value=1><label for="stayLoggedIn">&nbsp;&nbsp;&nbsp;Stay logged in?</label>
                     </div>
-					    <button type="submit" name="submit" onclick="saveEmailLS()" class="btn btn-primary btn-lg">LOGIN</button>
+					    <button type="submit" name="submit" onclick="saveEmailLS()" class="btn btn-secondary btn-lg">LOGIN</button>
 				</form>
 			</div>
 		</div>

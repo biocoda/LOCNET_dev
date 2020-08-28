@@ -11,7 +11,7 @@
                 <div class="card-body">
                     <form method="post">
                         <div class="form-group">
-                            <button class="btn btn-primary addIso-btn"><i class="fas fa-qrcode"></i>&#160;&#160;Scan Asset QR Code</button>
+                            <button class="btn btn-secondary addIso-btn"><i class="fas fa-qrcode"></i>&#160;&#160;Scan Asset QR Code</button>
                         </div>
                     </form>
                     <form method="post">
@@ -35,7 +35,7 @@
                         <div class="modal-body">
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                         </div>
                     </div>
                 </div>    
@@ -52,8 +52,8 @@
                         <div class="modal-body">
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="window.location.href = 'addDevices.php';">Yes</button>
-                            <button type="button" class="btn btn-primary" data-dismiss="modal">No</button>
+                            <button type="button" class="btn btn-secondary" id="yesButton" data-dismiss="modal" onclick="window.location.href = 'addDevices.php';">Yes</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
                         </div>
                     </div>
                 </div>
@@ -82,6 +82,9 @@
                 ?>
                 <script type='text/javascript'> $(document).ready(function(){ 
                     launchAF('Are you sure?', '<?php echo $modalOPstring ?>');
+                    $('#assetFound').on('shown.bs.modal', function(event) {
+                        $('#yesButton').focus();
+                    })
                     });
                 </script>
                 <?php

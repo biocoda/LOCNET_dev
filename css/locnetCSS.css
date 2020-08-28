@@ -1,6 +1,7 @@
 :root {
     --poOrange: #E58323;
-	--poDarkOrange: #C36000;
+    --poDarkOrange: #C36000;
+    --poDarkerOrange: #ad5700;
     --poDarkGrey: #313131;
 	--poCardTitleBar: #2f353A;
     --poLightGrey: #979797;
@@ -40,19 +41,25 @@
     padding: 0;
 }
 
-.btn-primary {
+.btn-secondary {
 	font-size: 10pt;
 	min-width: 10rem;
 }
 
-.btn-primary:hover {
+.btn-secondary:hover {
 	background-color: var(--poDarkOrange);
-	border-color: var(--poDarkOrange);
+    color: var(--poWhiteText);
 }
 
-.btn-primary:active {
-	background-color: var(--poDarkOrange);
-	border-color: var(--poDarkOrange);
+.btn-secondary:active {
+	background-color: var(--poDarkerOrange) !important;
+    border-color: var(--poDarkOrange);
+    color: var(--poWhiteText) !important;   
+}
+
+.btn-secondary {
+    color: var(--poWhiteText);
+    background-color: var(--poDarkOrange);
 }
 
 /* ISOLATION CARD CSS -------------------------*/
@@ -141,11 +148,13 @@ isocd-fa-ltgrey {
 }
 
 .manual-entryForm {
-    width: 80% !important;
+    width: 85% !important;
 }
 .manual-entryButton{
     height: 35px;
-    width: 20%;
+    width: 15%;
+    font-size: 1.2rem;
+    background-color: white;
 } 
 .sourceCard {
     min-width: 20rem;
@@ -163,6 +172,34 @@ html:not([dir="rtl"]) .sidebar-show.sidebar-fixed .main, html:not([dir="rtl"]) .
 .devcd-divider {
 	background-color: #c2c2c2;
     margin: 0;
+}
+
+.form-control:focus {
+    border-color: var(--poDarkOrange);  
+    box-shadow: none; 
+    -webkit-box-shadow: none;
+} 
+.has-error .form-control:focus{
+    box-shadow: none; 
+    -webkit-box-shadow: none;
+}
+.btn-secondary:focus {
+    border-color: var(--poDarkOrange);  
+    box-shadow: none; 
+    -webkit-box-shadow: none;
+} 
+
+.navbar-toggler:focus {
+    border-color: var(--poDarkOrange) !important;  
+    box-shadow: none !important; 
+    -webkit-box-shadow: none;
+}
+
+.navbar-toggler:focus {
+    outline: none;
+    border: none !important;
+    /* box-shadow: none !important; 
+    -webkit-box-shadow: none !important; */
 }
 
 /* RESPONSIVE CSS

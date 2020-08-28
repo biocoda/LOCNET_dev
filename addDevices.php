@@ -19,7 +19,7 @@
                 if ($_SESSION['currentAssetID']) {
 
                     include("db_connection.php");
-
+                    // get the assets from asset ID passed from previous page
                     $getDeviceQry = "SELECT `steam_isolator`, `water_isolator`, `cda_isolator`, `elec_isolator` FROM `assets` WHERE `asset_id` = $currentAsset";
                  
                     if ($getDevicesQRES = mysqli_query($link, $getDeviceQry)) {
@@ -33,7 +33,7 @@
                     echo "error with getting session id from previous page";
 
                 }
-
+                // Create array to hold iso record values
                 $currentIso = array('uid' => $_SESSION['id'], 'aid' => $_SESSION['currentAssetID'], 'di' => '', 'dr' => '', 'sIso' => 0, 'wIso' => 0, 'cIso' => 0, 'eIso' => 0);
 
                 print_r($currentIso);
@@ -46,13 +46,13 @@
                     <p>Close <?php echo $deviceRow['steam_isolator']; ?></p>
                     <form method="post">
                         <div class="form-group">
-                            <button type="submitAssetQRCode" name="submitAssetQRCode" class="btn btn-primary addIso-btn"><i class="fas fa-qrcode"></i>&#160;&#160;Scan Device QR Code</button>
+                            <button type="submitAssetQRCode" name="submitAssetQRCode" class="btn btn-secondary addIso-btn"><i class="fas fa-qrcode"></i>&#160;&#160;Scan Device QR Code</button>
                         </div>
                     </form>
                     <form method="post">
                         <div class="form-inline asset-inline-form">
                             <input type="text" id="steam_textEntry" name="steam_textEntry" class="form-control manual-entryForm" required placeholder="Enter Device ID">
-                            <button type="submit" name="submitSteam" onclick="UISwitch()" class="btn manual-entryButton"><i id="steamButton" class="fas lock-dark fa-lock-open"></i></button>
+                            <button type="submit" name="submitSteam" class="btn manual-entryButton"><i id="steamButton" class="fas lock-dark fa-lock-open"></i></button>
                         </div>
                     </form>
                 </div>
@@ -62,7 +62,7 @@
                     <p>Close <?php echo $deviceRow['water_isolator']; ?></p>
                     <form method="post">
                         <div class="form-group">
-                            <button type="" name="submitAssetQRCode" class="btn btn-primary addIso-btn"><i class="fas fa-qrcode"></i>&#160;&#160;Scan Device QR Code</button>
+                            <button type="" name="submitAssetQRCode" class="btn btn-secondary addIso-btn"><i class="fas fa-qrcode"></i>&#160;&#160;Scan Device QR Code</button>
                         </div>
                     </form>
                     <form method="post">
@@ -78,7 +78,7 @@
                     <p>Close <?php echo $deviceRow['cda_isolator']; ?></p>
                     <form method="post">
                         <div class="form-group">
-                            <button type="submitAssetQRCode" name="submitAssetQRCode" class="btn btn-primary addIso-btn"><i class="fas fa-qrcode"></i>&#160;&#160;Scan Device QR Code</button>
+                            <button type="submitAssetQRCode" name="submitAssetQRCode" class="btn btn-secondary addIso-btn"><i class="fas fa-qrcode"></i>&#160;&#160;Scan Device QR Code</button>
                         </div>
                     </form>
                     <form method="post">
@@ -94,7 +94,7 @@
                     <p>Close <?php echo $deviceRow['elec_isolator']; ?></p>
                     <form method="post">
                         <div class="form-group">
-                            <button type="submitAssetQRCode" name="submitAssetQRCode" class="btn btn-primary addIso-btn"><i class="fas fa-qrcode"></i>&#160;&#160;Scan Device QR Code</button>
+                            <button type="submitAssetQRCode" name="submitAssetQRCode" class="btn btn-secondary addIso-btn"><i class="fas fa-qrcode"></i>&#160;&#160;Scan Device QR Code</button>
                         </div>
                     </form>
                     <form method="post">
@@ -106,7 +106,7 @@
                     </div>
                 <hr class="devcd-divider"> 
                 <div class="card-body">
-                    <button type="submitAssetQRCode" name="submitAssetQRCode" class="btn btn-primary addIso-btn"><i class="far fa-save"></i>&#160;&#160;Save</button>
+                    <button type="submitAssetQRCode" name="submitAssetQRCode" class="btn btn-secondary addIso-btn"><i class="far fa-save"></i>&#160;&#160;Save</button>
                 </div>
             </div>
             </div>
@@ -123,7 +123,7 @@
                         <div class="modal-body">
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                         </div>
                     </div>
                 </div>    
@@ -142,53 +142,58 @@
             }
             function resetLockIcons() {
                 lkIcon.className = lkIcon.className.replace("fa-lock", " fa-lock-open");
-                lkIcon.className = lkIcon.className.replace("isocd-red", " lock-black");
+                lkIcon.className = lkIcon.className.replace("isocd-red", " lock-dark");
                 console.log('reset working');
             }
         </script>
 
-        <?php include_once("footer.php"); 
+        <?php 
+        include_once("footer.php"); 
         
-        if (array_key_exists("submitSteam", $_POST)) {
 
-            if ($deviceRow['steam_isolator'] == $_POST['steam_textEntry']) {
 
-                if ($currentIso['sIso'] == 0) {
 
-                    $currentIso['sIso'] = 1;
+            if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-                    ?>
-                    <script type='text/javascript'>
-                        var lkIcon = document.getElementById("steamButton");
-                        setLockIcons();
-                    </script>
-                    <?php
+                if ($deviceRow['steam_isolator'] == $_POST['steam_textEntry']) {
+
+
+
+                    if ($currentIso['sIso'] == 0) {
+                        // set array value to 1
+                        $currentIso['sIso'] = 1;
+    
+                        ?> 
+                        <script type='text/javascript'>
+                            var lkIcon = document.getElementById("steamButton");
+                            setLockIcons();
+                        </script>
+                        <?php
+    
+                    } else {
+    
+                        $currentIso['sIso'] = 0;
+    
+                        ?>
+                        <script type='text/javascript'>
+                            var lkIcon = document.getElementById("steamButton");
+                            resetLockIcons();
+                        </script>
+                        <?php
+    
+                    }
 
                 } else {
 
-                    $currentIso['sIso'] = 0;
-                    $_POST['steam_textEntry'] = "";
-
                     ?>
-                    <script type='text/javascript'>
-                        var lkIcon = document.getElementById("steamButton");
-                        resetLockIcons();
-                    </script>
+                    <script type='text/javascript'> $(document).ready(function(){ 
+                        notFoundModal('Device validation failed', 'Device ID does not match asset');
+                        });
+                    </script> 
                     <?php
-
+    
                 }
 
-
-            } else {
-
-                ?>
-                <script type='text/javascript'> $(document).ready(function(){ 
-                    notFoundModal('Device validation failed', 'Device ID does not match asset');
-                    });
-                </script> 
-                <?php
-
-            }
 
             switch ($currentIso['sIso']) {
 
@@ -201,5 +206,9 @@
 
             }
 
+
+            }
+
+
                 
-        }?>  
+        ?>  

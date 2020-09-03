@@ -32,3 +32,14 @@ function addSteamFunc() {
             // var y = "'".concat(callingTBid, "'");
                 // var deviceTB = $('input[name=y]').attr('value');
                 // var deviceTB = $(callingTBid).attr('value');
+
+
+                $emailTo = "posman@blueyonder.co.uk";
+        $subject = "Maybe this works";
+        $body = "Hola";
+        $headers = "from: posman@blueyonder.co.uk";
+        if (mail($emailTo, $subject, $body, $headers)) {
+            echo "email sent";
+        } else {
+            echo "email not sent";
+        }

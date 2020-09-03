@@ -11,7 +11,7 @@ if ($_SESSION['currentAssetID']) {
 
     include("db_connection.php");
     // get the assets from asset ID passed from previous page
-    $getDeviceQry = "SELECT `steam_isolator`, `water_isolator`, `cda_isolator`, `elec_isolator` FROM `assets` WHERE `asset_id` = $currentAsset";
+    $getDeviceQry = "SELECT `asset_name`, `description`, `steam_isolator`, `water_isolator`, `cda_isolator`, `elec_isolator` FROM `assets` WHERE `asset_id` = $currentAsset";
  
     if ($getDevicesQRES = mysqli_query($link, $getDeviceQry)) {
         $deviceRow = mysqli_fetch_assoc($getDevicesQRES);
@@ -126,7 +126,7 @@ if ($_SESSION['currentAssetID']) {
                 </form>
             </div>
 
-            <div class="modal fade" id="notFound" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal fade" id="deviceModal" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -156,8 +156,8 @@ if ($_SESSION['currentAssetID']) {
                         <div class="modal-body">
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" id="yesButton" data-dismiss="modal" onclick="window.location.href = 'isolations.php';">Yes</button>
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="window.location.href = 'isolations.php';">Close</button>
+                            <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
                         </div>
                     </div>
                 </div>
@@ -167,10 +167,10 @@ if ($_SESSION['currentAssetID']) {
 
         <script type="text/javascript">
             
-            function notFoundModal(title, content) {
-                $('#notFound .modal-title').text(title);
-                $('#notFound .modal-body').text(content);
-                $('#notFound').modal('show');
+            function launchDeviceModal(title, content) {
+                $('#deviceModal .modal-title').text(title);
+                $('#deviceModal .modal-body').text(content);
+                $('#deviceModal').modal('show');
                 }
             function showAddSteamFrm() {
                 $('#remSteamFrm').hide();
@@ -204,8 +204,14 @@ if ($_SESSION['currentAssetID']) {
                 $('#addElecFrm').hide();
                 $('#remElecFrm').show();
                 }
+            showAddSteamFrm();showAddWaterFrm();showAddCdaFrm();showAddElecFrm();
 
-
+            function launchSM(title, content) {
+                console.log('SM modal called');
+                $('#saveModal .modal-title').text(title);
+                $('#saveModal .modal-body').text(content);
+                $('#saveModal').modal('show');
+                }
             
             function addIsoFunc(callingTBid, deviceTBI, hiddenTIP) {
 
@@ -220,7 +226,10 @@ if ($_SESSION['currentAssetID']) {
 
                     // console.log('Devices match');
                     // console.log('output value = '+ $(hiddenTIP).val());
-                    alert('Device isolated');
+                    // alert('Device isolated');
+
+                    var addOkOpStr = "You have isolated device: "+deviceTBI;
+                    launchDeviceModal('Info', addOkOpStr);
 
                     switch (hiddenTIP) {
                         case '#steamIsolatedHD':
@@ -239,9 +248,9 @@ if ($_SESSION['currentAssetID']) {
                     
 
                 } else {
-
-                    console.log('devices do not match');
-                    alert('Devices do not match');
+                    // console.log('devices do not match');
+                    var addNotOkOpStr = "Device does not match asset";
+                    launchDeviceModal('Info', addNotOkOpStr);
                     
                 }
          
@@ -257,10 +266,11 @@ if ($_SESSION['currentAssetID']) {
 
                 if (deviceTB == deviceTBI) {
                     $(hiddenTIP).val(0);
+        
+                        
 
-                    // console.log('Devices match');
-                    // console.log('output value = '+ $(hiddenTIP).val());
-                    alert('Device de-isolated');
+                    var addOkOpStr = "You have de-isolated device: "+deviceTBI;
+                    launchDeviceModal('Info', addOkOpStr);
                     
                     switch (hiddenTIP) {
                         case '#steamIsolatedHD':
@@ -278,21 +288,18 @@ if ($_SESSION['currentAssetID']) {
                         }
 
                 } else {
-
-                    
                     // console.log('Devices do not match');
-                    alert('Devices do not match');
+                    var addNotOkOpStr = "Device does not match asset";
+                    launchDeviceModal('Info', addNotOkOpStr);
                 }
             }
 
-            $(document).ready(function() { 
-                
-                showAddSteamFrm();
-                showAddWaterFrm();
-                showAddCdaFrm();
-                showAddElecFrm();
-
-            });
+            // $(document).ready(function() { 
+            //     showAddSteamFrm();
+            //     showAddWaterFrm();
+            //     showAddCdaFrm();
+            //     showAddElecFrm();
+            //     });
 
         </script>
 
@@ -304,12 +311,28 @@ error_reporting(E_ALL);
 
 if ($_POST) {
 
-    print_r($_POST);
+    // print_r($_POST);
+
+    if ($_POST['steamIsolatedHD'] == 1 || $_POST['waterIsolatedHD'] == 1 || $_POST['cdaIsolatedHD'] == 1 || $_POST['elecIsolatedHD'] == 1) {
+        $sMOutputStr = "You have isolated ".$deviceRow['asset_name']."-".$deviceRow["description"];
+
+
+        ?>
+        <script type='text/javascript'> $(document).ready(function(){ 
+            launchSM('Finished', '<?php echo $sMOutputStr ?>');
+            });
+        </script>
+        <?php
+    } else {
+        ?>
+        <script type='text/javascript'> $(document).ready(function(){ 
+            launchDeviceModal('Error', 'You have selected no devices to isolate!');
+            });
+        </script>
+        <?php
+    }
 
 } 
-
-
-
 ?>  
 
 

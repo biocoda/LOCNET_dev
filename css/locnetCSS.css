@@ -165,6 +165,10 @@ isocd-fa-ltgrey {
     color: var(--poDarkGrey);
 }
 
+.lock-red {
+    color: var(--redCheck);
+}
+
 html:not([dir="rtl"]) .sidebar-show.sidebar-fixed .main, html:not([dir="rtl"]) .sidebar-show.sidebar-fixed .app-footer {
     margin-left: 0;
 }

@@ -16,6 +16,8 @@
 
         while ($row = mysqli_fetch_assoc($result)) {
 
+            $displayTimestamp = new DateTime($row['date_isolated']);
+
             include("isolationCard.php");
         }
     } else {

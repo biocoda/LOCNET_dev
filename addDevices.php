@@ -117,10 +117,10 @@ if ($_SESSION['currentAssetID']) {
             <hr class="devcd-divider"> 
             <form method="post">
                 <div class="card-body">
-                    <input type='hidden' name='steamIsolatedHD' id='steamIsolatedHD'>
-                    <input type='hidden' name='waterIsolatedHD' id='waterIsolatedHD'>
-                    <input type='hidden' name='cdaIsolatedHD' id='cdaIsolatedHD'>
-                    <input type='hidden' name='elecIsolatedHD' id='elecIsolatedHD'>
+                    <input type='hidden' name='steamIsolatedHD' id='steamIsolatedHD' value=0>
+                    <input type='hidden' name='waterIsolatedHD' id='waterIsolatedHD' value=0>
+                    <input type='hidden' name='cdaIsolatedHD' id='cdaIsolatedHD' value=0>
+                    <input type='hidden' name='elecIsolatedHD' id='elecIsolatedHD' value=0>
                     <button type="submit" name="saveButton" class="btn btn-secondary addIso-btn"><i class="far fa-save"></i>&#160;&#160;Save</button>
                 </div>
             </form>
@@ -238,15 +238,35 @@ if ($_POST) {
     // print_r($_POST);
 
     if ($_POST['steamIsolatedHD'] == 1 || $_POST['waterIsolatedHD'] == 1 || $_POST['cdaIsolatedHD'] == 1 || $_POST['elecIsolatedHD'] == 1) {
-        $sMOutputStr = "You have isolated the following on".$deviceRow['asset_name']."-".$deviceRow["description"];
 
+        include("db_connection.php");
 
-        ?>
-        <script type='text/javascript'> $(document).ready(function(){ 
-            launchSM('Finished', '<?php echo $sMOutputStr ?>');
-            });
-        </script>
-        <?php
+        $stmIso = $_POST['steamIsolatedHD'];
+        $watIso = $_POST['waterIsolatedHD'];
+        $cdaIso = $_POST['cdaIsolatedHD'];
+        $elecIso = $_POST['elecIsolatedHD'];
+
+        $insertIsoSQL = "INSERT INTO `isolations`(`isolation_id`, `assets_asset_id`, `users_user_id`, `date_removed`, `steam_isolated`, `water_isolated`, `cda_isolated`, `elec_isolated`) 
+                            VALUES (null, $currentAsset, $currentUser, null, $stmIso, $watIso, $cdaIso, $elecIso)"; 
+
+        if (mysqli_query($link, $insertIsoSQL)) {
+
+            $sMOutputStr = "You have isolated ".$deviceRow['asset_name']."-".$deviceRow["description"];
+            ?>
+            <script type='text/javascript'> $(document).ready(function(){ 
+                launchSM('Info', '<?php echo $sMOutputStr ?>');
+                });
+            </script>
+            <?php
+        } else {
+            ?>
+            <script type='text/javascript'> $(document).ready(function(){ 
+                launchSM('Error', 'Isolation not written to database);
+                });
+            </script>
+            <?php
+        }        
+
     } else {
         ?>
         <script type='text/javascript'> $(document).ready(function(){ 

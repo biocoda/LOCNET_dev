@@ -9,7 +9,7 @@
                 <div class="container">
                     <div class="row ">
                         <div class="col-1 isocd-fa-col1"><i class="isocd-fa far fa-calendar-check"></i></div>
-                        <div class="col-8 isocd-value"><p class="isocd-value-p"><?php echo $row['date_isolated'];?></p></div>
+                        <div class="col-8 isocd-value"><p class="isocd-value-p"><?php echo $displayTimestamp->format('j-M-Y H:i:s');?></p></div>
                     </div>
                 </div>
             </li>

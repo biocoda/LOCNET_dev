@@ -36,17 +36,21 @@
 
 
     function launchAF(title, content) {
-        console.log("AF modal called");
         $("#assetFound .modal-title").text(title);
         $("#assetFound .modal-body").text(content);
         $("#assetFound").modal("show");
     }
     
     function launchNF(title, content) {
-        console.log('NF modal called');
         $('#notFound .modal-title').text(title);
         $('#notFound .modal-body').text(content);
         $('#notFound').modal('show');
+    }
+
+    function launchAI(title, content) {
+        $('#alreadyIsod .modal-title').text(title);
+        $('#alreadyIsod .modal-body').text(content);
+        $('#alreadyIsod').modal('show');
     }
         
 

@@ -16,7 +16,7 @@
                     </form>
                     <form method="post">
                         <div class="form-group form-inline">
-                            <input type="text" id="assetID" name="assetIDfromForm" class="form-control manual-entryForm" required placeholder="Enter Asset ID">
+                            <input type="text" id="assetID" name="assetIDfromForm" class="form-control manual-entryForm" maxlength="8" required placeholder="Enter Asset ID">
                             <button type="submit" name="submit" class="btn manual-entryButton"><i class="fas fa-search"></i></button>
                         </div>
                     </form>
@@ -26,23 +26,7 @@
                 <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                        <h5 class="modal-title"></h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" id='closeButton' name="closeButton" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        </div>
-                    </div>
-                </div>    
-            </div>    
-            <div class="modal fade" id="alreadyIsod" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
+                            <i class="fa fa-exclamation-circle modalTitleFA modalFaRed" aria-hidden="true"></i>
                             <h5 class="modal-title"></h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
@@ -51,8 +35,26 @@
                         <div class="modal-body">
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" name="yesButton" id="yesButton" data-dismiss="modal" onclick="window.location.href = 'editDevices.php';">Yes</button>
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                            <button type="button" id='closeButton' name="closeButton" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-times"></i>&nbsp;&nbsp;&nbsp;Close</button>
+                        </div>
+                    </div>
+                </div>    
+            </div>    
+            <div class="modal fade" id="alreadyIsod" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <i class="fa fa-question-circle modalTitleFA" aria-hidden="true"></i>
+                            <h5 class="modal-title"></h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" name="yesButton" id="yesButton" data-dismiss="modal" onclick="window.location.href = 'editDevices.php';"><i class="fa fa-check"></i>&nbsp;&nbsp;&nbsp;Yes</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-times"></i>&nbsp;&nbsp;&nbsp;No</button>
                         </div>
                     </div>
                 </div>
@@ -89,7 +91,7 @@
         
                         ?>
                         <script type='text/javascript'> $(document).ready(function(){ 
-                            launchAI("Warning", '<?php echo $modalOPstring ?>');
+                            launchAI("Asset found", '<?php echo $modalOPstring ?>');
                             $('#alreadyIsod').on('shown.bs.modal', function(event) {
                                 $('#yesButton').focus();
                             })

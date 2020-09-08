@@ -206,6 +206,23 @@ html:not([dir="rtl"]) .sidebar-show.sidebar-fixed .main, html:not([dir="rtl"]) .
     -webkit-box-shadow: none !important; */
 }
 
+.modalTitleFA {
+    font-size: 1.9em;
+    padding-right: 10px;
+}
+
+.modalFARed {
+    color: var(--redCheck);
+}
+
+.modalFAYel {
+    color: var(--redCheck);
+}
+
+.modalFARed {
+    color: var(--redCheck);
+}
+
 /* RESPONSIVE CSS
 -------------------------------------------------- */
 /* anything over 480px the following styles will apply*/

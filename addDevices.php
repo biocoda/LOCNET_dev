@@ -37,14 +37,14 @@ if ($_SESSION['currentAssetID']) {
                 </form>
                 <form name='addSteamFrmName' id='addSteamFrm'>
                     <div class="form-inline asset-inline-form">
-                        <input type="text" id="addSteamTE" name="addSteamTE" class="form-control manual-entryForm" placeholder="Enter Device ID" required>
-                        <button type='button' name="submitSteam" class="btn manual-entryButton"><i id="steamBtnAdd" onclick='addIsoFunc("#addSteamTE", "<?php echo $deviceRow['steam_isolator']; ?>", "#steamIsolatedHD")' class="fas lock-dark fa-lock-open"></i></button>
+                        <input type="text" id="addSteamTE" name="addSteamTE" class="form-control manual-entryForm" placeholder="Enter Device ID" maxlength="8" required>
+                        <button type='button' name="submitSteam" class="btn manual-entryButton"><i id="steamBtnAdd" onclick='addIsoFunc("#addSteamTE", "<?php echo $deviceRow['steam_isolator']; ?>", "#steamIsolatedHD", "<?php echo $deviceRow['asset_name'];?>", "<?php echo $deviceRow['description'];?>")' class="fas lock-dark fa-lock-open"></i></button>
                     </div>
                 </form>
                 <form name='remSteamFrmName' id='remSteamFrm'>
                     <div class="form-inline asset-inline-form">
-                        <input type="text" id="remSteamTE" name="remSteamTE" class="form-control manual-entryForm" placeholder="Enter Device ID" required>
-                        <button type='button' name="submitSteamBtn" class="btn manual-entryButton"><i id="steamBtnRem" onclick='remIsoFunc("#remSteamTE", "<?php echo $deviceRow['steam_isolator']; ?>", "#steamIsolatedHD")' class="fas lock-red fa-lock"></i></button>
+                        <input type="text" id="remSteamTE" name="remSteamTE" class="form-control manual-entryForm" placeholder="Enter Device ID" maxlength="8" required>
+                        <button type='button' name="submitSteamBtn" class="btn manual-entryButton"><i id="steamBtnRem" onclick='remIsoFunc("#remSteamTE", "<?php echo $deviceRow['steam_isolator']; ?>", "#steamIsolatedHD", "<?php echo $deviceRow['asset_name'];?>", "<?php echo $deviceRow['description'];?>")' class="fas lock-red fa-lock"></i></button>
                     </div>
                 </form>
             </div>
@@ -59,14 +59,14 @@ if ($_SESSION['currentAssetID']) {
                 </form>
                 <form name='addWaterFrmName' id='addWaterFrm'>
                     <div class="form-inline asset-inline-form">
-                        <input type="text" id="addWaterTE" name="addWaterTE" class="form-control manual-entryForm" placeholder="Enter Device ID" required>
-                        <button type='button' name="submitWater" class="btn manual-entryButton"><i id="waterBtnAdd" onclick='addIsoFunc("#addWaterTE", "<?php echo $deviceRow['water_isolator'];?>", "#waterIsolatedHD")' class="fas lock-dark fa-lock-open"></i></button>
+                        <input type="text" id="addWaterTE" name="addWaterTE" class="form-control manual-entryForm" placeholder="Enter Device ID" maxlength="8" required>
+                        <button type='button' name="submitWater" class="btn manual-entryButton"><i id="waterBtnAdd" onclick='addIsoFunc("#addWaterTE", "<?php echo $deviceRow['water_isolator'];?>", "#waterIsolatedHD", "<?php echo $deviceRow['asset_name'];?>", "<?php echo $deviceRow['description'];?>")' class="fas lock-dark fa-lock-open"></i></button>
                     </div>
                 </form>
                 <form name='remWaterFrmName' id='remWaterFrm'>
                     <div class="form-inline asset-inline-form">
-                        <input type="text" id="remWaterTE" name="remWaterTE" class="form-control manual-entryForm" placeholder="Enter Device ID" required>
-                        <button type='button' name="submitWaterBtn" class="btn manual-entryButton"><i id="waterBtnRem" onclick='remIsoFunc("#remWaterTE", "<?php echo $deviceRow['water_isolator']; ?>", "#waterIsolatedHD")' class="fas lock-red fa-lock"></i></button>
+                        <input type="text" id="remWaterTE" name="remWaterTE" class="form-control manual-entryForm" placeholder="Enter Device ID" maxlength="8" required>
+                        <button type='button' name="submitWaterBtn" class="btn manual-entryButton"><i id="waterBtnRem" onclick='remIsoFunc("#remWaterTE", "<?php echo $deviceRow['water_isolator']; ?>", "#waterIsolatedHD", "<?php echo $deviceRow['asset_name'];?>", "<?php echo $deviceRow['description'];?>")' class="fas lock-red fa-lock"></i></button>
                     </div>
                 </form>
             </div>
@@ -81,14 +81,14 @@ if ($_SESSION['currentAssetID']) {
                 </form>
                 <form name='addCdaFrmName' id='addCdaFrm'>
                     <div class="form-inline asset-inline-form">
-                        <input type="text" id="addCdaTE" name="addCdaTE" class="form-control manual-entryForm" placeholder="Enter Device ID" required>
-                        <button type='button' name="submitCda" class="btn manual-entryButton"><i id="cdaBtnAdd" onclick='addIsoFunc("#addCdaTE", "<?php echo $deviceRow['cda_isolator'];?>", "#cdaIsolatedHD")' class="fas lock-dark fa-lock-open"></i></button>
+                        <input type="text" id="addCdaTE" name="addCdaTE" class="form-control manual-entryForm" placeholder="Enter Device ID" maxlength="8" required>
+                        <button type='button' name="submitCda" class="btn manual-entryButton"><i id="cdaBtnAdd" onclick='addIsoFunc("#addCdaTE", "<?php echo $deviceRow['cda_isolator'];?>", "#cdaIsolatedHD", "<?php echo $deviceRow['asset_name'];?>", "<?php echo $deviceRow['description'];?>")' class="fas lock-dark fa-lock-open"></i></button>
                     </div>
                 </form>
                 <form name='remCdaFrmName' id='remCdaFrm'>
                     <div class="form-inline asset-inline-form">
-                        <input type="text" id="remCdaTE" name="remCdaTE" class="form-control manual-entryForm" placeholder="Enter Device ID" required>
-                        <button type='button' name="submitCdaBtn" class="btn manual-entryButton"><i id="cdaBtnRem" onclick='remIsoFunc("#remCdaTE", "<?php echo $deviceRow['cda_isolator']; ?>", "#cdaIsolatedHD")' class="fas lock-red fa-lock"></i></button>
+                        <input type="text" id="remCdaTE" name="remCdaTE" class="form-control manual-entryForm" placeholder="Enter Device ID" maxlength="8" required>
+                        <button type='button' name="submitCdaBtn" class="btn manual-entryButton"><i id="cdaBtnRem" onclick='remIsoFunc("#remCdaTE", "<?php echo $deviceRow['cda_isolator']; ?>", "#cdaIsolatedHD", "<?php echo $deviceRow['asset_name'];?>", "<?php echo $deviceRow['description'];?>")' class="fas lock-red fa-lock"></i></button>
                     </div>
                 </form>
             </div>
@@ -103,14 +103,14 @@ if ($_SESSION['currentAssetID']) {
                 </form>
                 <form name='addElecFrmName' id='addElecFrm'>
                     <div class="form-inline asset-inline-form">
-                        <input type="text" id="addElecTE" name="addElecTE" class="form-control manual-entryForm" placeholder="Enter Device ID" required>
-                        <button type='button' name="submitElec" class="btn manual-entryButton"><i id="elecBtnAdd" onclick='addIsoFunc("#addElecTE", "<?php echo $deviceRow['elec_isolator'];?>", "#elecIsolatedHD")' class="fas lock-dark fa-lock-open"></i></button>
+                        <input type="text" id="addElecTE" name="addElecTE" class="form-control manual-entryForm" placeholder="Enter Device ID" maxlength="8" required>
+                        <button type='button' name="submitElec" class="btn manual-entryButton"><i id="elecBtnAdd" onclick='addIsoFunc("#addElecTE", "<?php echo $deviceRow['elec_isolator'];?>", "#elecIsolatedHD", "<?php echo $deviceRow['asset_name'];?>", "<?php echo $deviceRow['description'];?>")' class="fas lock-dark fa-lock-open"></i></button>
                     </div>
                 </form>
                 <form name='remElecFrmName' id='remElecFrm'>
                     <div class="form-inline asset-inline-form">
-                        <input type="text" id="remElecTE" name="remElecTE" class="form-control manual-entryForm" placeholder="Enter Device ID" required>
-                        <button type='button' name="submitElecBtn" class="btn manual-entryButton"><i id="elecBtnRem" onclick='remIsoFunc("#remElecTE", "<?php echo $deviceRow['elec_isolator']; ?>", "#elecIsolatedHD")' class="fas lock-red fa-lock"></i></button>
+                        <input type="text" id="remElecTE" name="remElecTE" class="form-control manual-entryForm" placeholder="Enter Device ID" maxlength="8" required>
+                        <button type='button' name="submitElecBtn" class="btn manual-entryButton"><i id="elecBtnRem" onclick='remIsoFunc("#remElecTE", "<?php echo $deviceRow['elec_isolator']; ?>", "#elecIsolatedHD", "<?php echo $deviceRow['asset_name'];?>", "<?php echo $deviceRow['description'];?>")' class="fas lock-red fa-lock"></i></button>
                     </div>
                 </form>
             </div>
@@ -129,6 +129,7 @@ if ($_SESSION['currentAssetID']) {
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
+                        <i class="fa fa-exclamation-circle modalTitleFA" aria-hidden="true"></i>
                         <h5 class="modal-title"></h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
@@ -137,7 +138,7 @@ if ($_SESSION['currentAssetID']) {
                     <div class="modal-body">
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-times"></i>&nbsp;&nbsp;&nbsp;Close</button>
                     </div>
                 </div>
             </div>    
@@ -146,6 +147,7 @@ if ($_SESSION['currentAssetID']) {
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
+                        <i class="fa fa-exclamation-circle modalTitleFA modalFaRed" aria-hidden="true"></i>
                         <h5 class="modal-title"></h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
@@ -154,8 +156,7 @@ if ($_SESSION['currentAssetID']) {
                     <div class="modal-body">
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="window.location.href = 'isolations.php';">Close</button>
-                        <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="window.location.href = 'isolations.php';"><i class="fa fa-times"></i>&nbsp;&nbsp;&nbsp;Close</button>
                     </div>
                 </div>
             </div>
@@ -175,8 +176,9 @@ if ($_SESSION['currentAssetID']) {
 
     showAddSteamFrm();showAddWaterFrm();showAddCdaFrm();showAddElecFrm();
 
-    function addIsoFunc(callingTBid, deviceTBI, hiddenTIP) {
+    function addIsoFunc(callingTBid, deviceTBI, hiddenTIP, assName, assDesc) {
         var deviceTB = $(callingTBid).val();
+        var devType = "";
         if (deviceTB == deviceTBI) {
             $(hiddenTIP).val(1);
             var addOkOpStr = "You have isolated device: "+deviceTBI;
@@ -196,13 +198,28 @@ if ($_SESSION['currentAssetID']) {
                     break;
             }
         } else {
-            var addNotOkOpStr = "Device does not match asset";
+            switch (hiddenTIP) {
+                case '#steamIsolatedHD':
+                    devType = "a steam";
+                    break;
+                case '#waterIsolatedHD':
+                    devType = "a water";
+                    break;
+                case '#cdaIsolatedHD':
+                    devType = "a CDA";
+                    break;
+                case '#elecIsolatedHD':
+                    devType = "an electrical";
+                    break;
+                }
+            var addNotOkOpStr = ""+deviceTB+" is not "+devType+" isolation device for "+String(assName)+" "+String(assDesc);
             launchDeviceModal('Info', addNotOkOpStr);
         }
     }
 
-    function remIsoFunc(callingTBid, deviceTBI, hiddenTIP) {
+    function remIsoFunc(callingTBid, deviceTBI, hiddenTIP, assName, assDesc) {
         var deviceTB = $(callingTBid).val();
+        var devType = "";
         if (deviceTB == deviceTBI) {
             $(hiddenTIP).val(0);
             var addOkOpStr = "You have de-isolated device: "+deviceTBI;
@@ -222,7 +239,21 @@ if ($_SESSION['currentAssetID']) {
                     break;
                 }
         } else {
-            var addNotOkOpStr = "Device does not match asset";
+            switch (hiddenTIP) {
+                case '#steamIsolatedHD':
+                    devType = "a steam";
+                    break;
+                case '#waterIsolatedHD':
+                    devType = "a water";
+                    break;
+                case '#cdaIsolatedHD':
+                    devType = "a CDA";
+                    break;
+                case '#elecIsolatedHD':
+                    devType = "an electrical";
+                    break;
+                }
+            var addNotOkOpStr = ""+deviceTB+" is not a "+devType+" isolation device for "+String(assName)+" "+String(assDesc);
             launchDeviceModal('Info', addNotOkOpStr);
         }
     }

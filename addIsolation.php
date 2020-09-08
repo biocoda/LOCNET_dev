@@ -16,7 +16,7 @@
                     </form>
                     <form method="post">
                         <div class="form-group form-inline">
-                            <input type="text" id="assetID" name="assetIDfromForm" class="form-control manual-entryForm" required placeholder="Enter Asset ID">
+                            <input type="text" id="assetID" name="assetIDfromForm" class="form-control manual-entryForm" maxlength="8" required placeholder="Enter Asset ID">
                             <button type="submit" name="submit" class="btn manual-entryButton"><i class="fas fa-search"></i></button>
                         </div>
                     </form>
@@ -27,6 +27,7 @@
                 <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
+                            <i class="fa fa-exclamation-circle modalTitleFA" aria-hidden="true"></i>
                             <h5 class="modal-title"></h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
@@ -35,7 +36,7 @@
                         <div class="modal-body">
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-times"></i>&nbsp;&nbsp;&nbsp;Close</button>
                         </div>
                     </div>
                 </div>    
@@ -44,6 +45,7 @@
                 <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
+                            <i class="fa fa-question-circle modalTitleFA" aria-hidden="true"></i>
                             <h5 class="modal-title"></h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
@@ -52,8 +54,8 @@
                         <div class="modal-body">
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" id="yesButton" data-dismiss="modal" onclick="window.location.href = 'addDevices.php';">Yes</button>
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                            <button type="button" class="btn btn-secondary" id="yesButton" data-dismiss="modal" onclick="window.location.href = 'addDevices.php';"><i class="fa fa-check" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Yes</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-times" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;No</button>
                         </div>
                     </div>
                 </div>
@@ -62,6 +64,7 @@
                 <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
+                            <i class="fa fa-exclamation-circle modalTitleFA modalFaRed" aria-hidden="true"></i>
                             <h5 class="modal-title"></h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
@@ -70,8 +73,8 @@
                         <div class="modal-body">
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" id="editButton" data-dismiss="modal" onclick="window.location.href = 'editDevices.php';">Edit</button>
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Change Asset</button>
+                            <button type="button" class="btn btn-secondary" id="editButton" data-dismiss="modal" onclick="window.location.href = 'editDevices.php';"><i class="fa fa-pencil-square-o"></i>&nbsp;&nbsp;&nbsp;Edit</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-undo"></i>&nbsp;&nbsp;&nbsp;Change Asset</button>
                         </div>
                     </div>
                 </div>
@@ -101,7 +104,7 @@
 
                     if (isset($assetIsolatedRow)) {
 
-                        $modalOPstring = $row['asset_name']."-".$row["description"]." has current isolations you can edit or change asset?";
+                        $modalOPstring = $row['asset_name']."-".$row["description"]." already has current isolations - do you want to edit these or change to another asset?";
                         $_SESSION['currentAssetID'] = $row['asset_id'];
                         $_SESSION['currentAssetDesc'] = $row['asset_name']."-".$row["description"];
         

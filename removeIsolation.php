@@ -4,7 +4,7 @@
 ?>
     <div class="mainContent">
         <div class="jumbotron isocd-jtron">
-            <p class="page-title">Add Isolation</p>
+            <p class="page-title">Remove Isolation</p>
             <hr class="isolTitleHR">
             <div class="card addIso-card">
                 <p class="card-header addIso-card-header">Select Asset to Isolate</p>
@@ -22,12 +22,11 @@
                     </form>
                 </div>
             </div>
-
             <div class="modal fade" id="notFound" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title"></h5>
+                        <h5 class="modal-title"></h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                             </button>
@@ -35,29 +34,11 @@
                         <div class="modal-body">
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" id='closeButton' name="closeButton" class="btn btn-secondary" data-dismiss="modal">Close</button>
                         </div>
                     </div>
                 </div>    
             </div>    
-            <div class="modal fade" id="assetFound" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title"></h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" id="yesButton" data-dismiss="modal" onclick="window.location.href = 'addDevices.php';">Yes</button>
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
             <div class="modal fade" id="alreadyIsod" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
@@ -70,14 +51,15 @@
                         <div class="modal-body">
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" id="editButton" data-dismiss="modal" onclick="window.location.href = 'editDevices.php';">Edit</button>
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Change Asset</button>
+                            <button type="button" class="btn btn-secondary" name="yesButton" id="yesButton" data-dismiss="modal" onclick="window.location.href = 'editDevices.php';">Yes</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
                         </div>
                     </div>
                 </div>
             </div>
-<?php include_once("footer.php"); ?>
-<?php
+<?php 
+
+    include_once("footer.php");
 
     if (array_key_exists("submit", $_POST)) {
 
@@ -101,15 +83,15 @@
 
                     if (isset($assetIsolatedRow)) {
 
-                        $modalOPstring = $row['asset_name']."-".$row["description"]." has current isolations you can edit or change asset?";
+                        $modalOPstring = "You have selected ".$row['asset_name']."-".$row["description"]." is this correct?";
                         $_SESSION['currentAssetID'] = $row['asset_id'];
                         $_SESSION['currentAssetDesc'] = $row['asset_name']."-".$row["description"];
         
                         ?>
                         <script type='text/javascript'> $(document).ready(function(){ 
                             launchAI("Warning", '<?php echo $modalOPstring ?>');
-                            $('#assetFound').on('shown.bs.modal', function(event) {
-                                $('#editButton').focus();
+                            $('#alreadyIsod').on('shown.bs.modal', function(event) {
+                                $('#yesButton').focus();
                             })
                             });
                         </script>
@@ -117,15 +99,15 @@
 
                     } else {
 
-                        $modalOPstring = "You have selected ".$row['asset_name']."-".$row["description"]." is this correct?";
+                        $modalOPstring = "".$row['asset_name']."-".$row["description"]." has no isolations";
                         $_SESSION['currentAssetID'] = $row['asset_id'];
                         $_SESSION['currentAssetDesc'] = $row['asset_name']."-".$row["description"];
         
                         ?>
                         <script type='text/javascript'> $(document).ready(function(){ 
-                            launchAF('Are you sure?', '<?php echo $modalOPstring ?>');
-                            $('#assetFound').on('shown.bs.modal', function(event) {
-                                $('#yesButton').focus();
+                            launchNF('No isolation records found', '<?php echo $modalOPstring ?>');
+                            $('#notFound').on('shown.bs.modal', function(event) {
+                                $('#closeButton').focus();
                             })
                             });
                         </script>

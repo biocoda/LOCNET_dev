@@ -70,7 +70,6 @@
             </li>
         </ul>
     <hr class="isocd-divider"> 
-        <a href="#" class="btn btn-secondary isocd-btn"><i class="fa fa-unlock-alt"></i>&nbsp;&nbsp;&nbsp;&nbsp;Remove Isolation</a> 
     </div>
 </div>        
 <script type="text/javascript">
@@ -95,3 +94,4 @@
         setLockIcons();
     }
 </script>
+

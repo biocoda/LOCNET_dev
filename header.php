@@ -5,7 +5,7 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
 		<meta name="description" content="LOTO Register v1.0">
-		<meta name="author" content="Paul Osman">
+		<meta name="author" content="STU51272">
 		<link rel="icon" href="assets/icons/locnet-icon.png">
 		<title>LOCNET</title>
         <script src="https://kit.fontawesome.com/9d1949a1b9.js" crossorigin="anonymous"></script>
@@ -31,7 +31,7 @@
 		<ul class="nav nav-ul">
             <li class="nav-item"><a class="nav-link" href="index.php"><i class="nav-icon fas fa-lock"></i>LOCNET</a></li>
 			<li class="nav-item"><a class="nav-link" href="addIsolation.php"><i class="nav-icon fas fa-plus"></i>Add New Isolation</a></li>
-            <!-- <li class="nav-item"><a class="nav-link" href="#"><i class="nav-icon fas fa-edit"></i>Edit Isolation</a></li> -->
+            <li class="nav-item"><a class="nav-link" href="removeIsolation.php"><i class="nav-icon fas fa-edit"></i>Edit/Remove Isolation</a></li>
 			<li class="divider"></li>
 			<li class="nav-title">ISOLATIONS</li>
             <li class="nav-item"><a class="nav-link" href="isolations.php"><i id="isolationsIcon" class="nav-icon fas fa-globe"></i>All Isolations</a></li>          

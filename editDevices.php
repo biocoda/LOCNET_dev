@@ -299,9 +299,6 @@ if ($_POST) {
     include("db_connection.php");
     $isoID = $currIsoRow['isolation_id'];
 
-    echo $isoID;
-
-
     if ($_POST['steamIsolatedHD'] == 1 || $_POST['waterIsolatedHD'] == 1 || $_POST['cdaIsolatedHD'] == 1 || $_POST['elecIsolatedHD'] == 1) {
 
         $stmIso = $_POST['steamIsolatedHD'];
@@ -312,7 +309,19 @@ if ($_POST) {
 
         $updateIsoSQL = "UPDATE `isolations` SET `steam_isolated` = $stmIso, `water_isolated` = $watIso, `cda_isolated` = $cdaIso, `elec_isolated` = $elecIso, `last_updated` = NOW() WHERE `isolation_id` = $isoID";
 
+        $getStakeholdersQRY = "SELECT `user_email` FROM `users` JOIN `stakeholders` ON `users_user_id` = `user_id` WHERE `assets_asset_id` = $currentAsset"; 
+
         if (mysqli_query($link, $updateIsoSQL)) {
+
+            if ($stakeholderRes = mysqli_query($link, $getStakeholdersQRY)) {
+
+                while ($stakeholderRow = mysqli_fetch_assoc($stakeholderRes)) {
+
+                    // do something here with stakeholder email e.g. new iso has been updated to ??
+                    // call send email func with each address as prameter
+                    // print_r($stakeholderRow);
+                }
+            }
 
             $sMOutputStr = "You have updated the isolations for ".$deviceRow['asset_name']."-".$deviceRow["description"];
             ?>
@@ -337,7 +346,19 @@ if ($_POST) {
 
         $isoRemoveQRY = "UPDATE `isolations` SET `date_removed` = NOW() WHERE `isolation_id` = $isoID";
 
+        $getStakeholdersQRY = "SELECT `user_email` FROM `users` JOIN `stakeholders` ON `users_user_id` = `user_id` WHERE `assets_asset_id` = $currentAsset"; 
+
         if (mysqli_query($link, $isoRemoveQRY)) {
+
+            if ($stakeholderRes = mysqli_query($link, $getStakeholdersQRY)) {
+
+                while ($stakeholderRow = mysqli_fetch_assoc($stakeholderRes)) {
+
+                    // do something here with stakeholder email e.g. new iso has been removed from ??
+                    // call send email func with each address as prameter
+                    // print_r($stakeholderRow);
+                }
+            }
 
             ?>
             <script type='text/javascript'> $(document).ready(function(){ 

@@ -277,7 +277,20 @@ if ($_POST) {
         $insertIsoSQL = "INSERT INTO `isolations`(`isolation_id`, `assets_asset_id`, `users_user_id`, `date_removed`, `steam_isolated`, `water_isolated`, `cda_isolated`, `elec_isolated`, `last_updated`) 
                             VALUES (null, $currentAsset, $currentUser, null, $stmIso, $watIso, $cdaIso, $elecIso, NOW())"; 
 
+        $getStakeholdersQRY = "SELECT `user_email` FROM `users` JOIN `stakeholders` ON `users_user_id` = `user_id` WHERE `assets_asset_id` = $currentAsset";                    
+
         if (mysqli_query($link, $insertIsoSQL)) {
+
+            // returns the emails of stakeholders
+            if ($stakeholderRes = mysqli_query($link, $getStakeholdersQRY)) {
+
+                while ($stakeholderRow = mysqli_fetch_assoc($stakeholderRes)) {
+
+                    // do something here with stakeholder email e.g. new iso has been added to ??
+                    // call send email func with each address as prameter
+                    // print_r($stakeholderRow);
+                }
+            }
 
             $sMOutputStr = "You have isolated ".$deviceRow['asset_name']."-".$deviceRow["description"];
             ?>

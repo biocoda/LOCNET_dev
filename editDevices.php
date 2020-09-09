@@ -139,7 +139,7 @@ if ($_SESSION['currentAssetID']) {
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <i class="fa fa-exclamation-circle modalTitleFA modalFaRed" aria-hidden="true"></i>
+                        <i class="fa fa-exclamation-circle modalTitleFA" aria-hidden="true"></i>
                         <h5 class="modal-title"></h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
@@ -201,7 +201,7 @@ if ($_SESSION['currentAssetID']) {
     function showRemElecFrm() {$('#addElecFrm').hide();$('#remElecFrm').show();}
     function launchDeviceModal(title, content) {$('#deviceModal .modal-title').text(title); $('#deviceModal .modal-body').text(content);$('#deviceModal').modal('show');}
     function launchSM(title, content) {$('#saveModal .modal-title').text(title);$('#saveModal .modal-body').text(content);$('#saveModal').modal('show');}
-    function launchRM(title, content) {$('#removedIsoModal .modal-title').text(title);$('#removedIsoModal .modal-body').text(content);$('removedIsoModal').modal('show');}
+    function launchRM(title, content) {$('#removedIsoModal .modal-title').text(title);$('#removedIsoModal .modal-body').text(content);$('#removedIsoModal').modal('show');}
 
     if ($(steamIsolatedHD).val() == 1) {showRemSteamFrm();} else {showAddSteamFrm();}
     if ($(waterIsolatedHD).val() == 1) {showRemWaterFrm();} else {showAddWaterFrm();}
@@ -209,8 +209,6 @@ if ($_SESSION['currentAssetID']) {
     if ($(elecIsolatedHD).val() == 1) {showRemElecFrm();} else {showAddElecFrm();}
 
     function addIsoFunc(callingTBid, deviceTBI, hiddenTIP, assName, assDesc) {
-        console.log(assName);
-        console.log(assDesc);
         var deviceTB = $(callingTBid).val();
         if (deviceTB == deviceTBI) {
             $(hiddenTIP).val(1);
@@ -233,26 +231,24 @@ if ($_SESSION['currentAssetID']) {
         } else {
             switch (hiddenTIP) {
                 case '#steamIsolatedHD':
-                    devType = "a steam";
+                    devType = "steam";
                     break;
                 case '#waterIsolatedHD':
-                    devType = "a water";
+                    devType = "water";
                     break;
                 case '#cdaIsolatedHD':
-                    devType = "a CDA";
+                    devType = "CDA";
                     break;
                 case '#elecIsolatedHD':
-                    devType = "an electrical";
+                    devType = "electrical";
                     break;
                 }
-            var addNotOkOpStr = ""+deviceTB+" is not a "+devType+" isolation device for "+String(assName)+" "+String(assDesc);
+            var addNotOkOpStr = ""+deviceTB+" is not the "+devType+" isolation device for "+String(assName)+" "+String(assDesc);
             launchDeviceModal('Device not recognised', addNotOkOpStr);
         }
     }
 
     function remIsoFunc(callingTBid, deviceTBI, hiddenTIP, assName, assDesc) {
-        console.log(assName);
-        console.log(assDesc);
         var deviceTB = $(callingTBid).val();
         if (deviceTB == deviceTBI) {
             $(hiddenTIP).val(0);
@@ -275,19 +271,19 @@ if ($_SESSION['currentAssetID']) {
         } else {
             switch (hiddenTIP) {
                 case '#steamIsolatedHD':
-                    devType = "a steam";
+                    devType = "steam";
                     break;
                 case '#waterIsolatedHD':
-                    devType = "a water";
+                    devType = "water";
                     break;
                 case '#cdaIsolatedHD':
-                    devType = "a CDA";
+                    devType = "CDA";
                     break;
                 case '#elecIsolatedHD':
-                    devType = "an electrical";
+                    devType = "electrical";
                     break;
                 }
-            var addNotOkOpStr = ""+deviceTB+" is not "+devType+" isolation device for "+String(assName)+" "+String(assDesc);
+            var addNotOkOpStr = ""+deviceTB+" is not the "+devType+" isolation device for "+String(assName)+" "+String(assDesc);
             launchDeviceModal('Device not recognised', addNotOkOpStr);
         }
     }
@@ -303,6 +299,9 @@ if ($_POST) {
     include("db_connection.php");
     $isoID = $currIsoRow['isolation_id'];
 
+    echo $isoID;
+
+
     if ($_POST['steamIsolatedHD'] == 1 || $_POST['waterIsolatedHD'] == 1 || $_POST['cdaIsolatedHD'] == 1 || $_POST['elecIsolatedHD'] == 1) {
 
         $stmIso = $_POST['steamIsolatedHD'];
@@ -311,7 +310,7 @@ if ($_POST) {
         $elecIso = $_POST['elecIsolatedHD'];
 
 
-        $updateIsoSQL = "UPDATE `isolations` SET `steam_isolated` = $stmIso, `water_isolated` = $watIso, `cda_isolated` = $cdaIso, `elec_isolated` = $elecIso WHERE `isolation_id` = $isoID";
+        $updateIsoSQL = "UPDATE `isolations` SET `steam_isolated` = $stmIso, `water_isolated` = $watIso, `cda_isolated` = $cdaIso, `elec_isolated` = $elecIso, `last_updated` = NOW() WHERE `isolation_id` = $isoID";
 
         if (mysqli_query($link, $updateIsoSQL)) {
 
@@ -327,7 +326,7 @@ if ($_POST) {
 
             ?>
             <script type='text/javascript'> $(document).ready(function(){ 
-                launchSM('Error', 'Isolation not written to database);
+                launchSM('Error', 'Isolation not written to database');
                 });
             </script>
             <?php

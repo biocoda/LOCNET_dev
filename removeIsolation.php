@@ -4,7 +4,7 @@
 ?>
     <div class="mainContent">
         <div class="jumbotron isocd-jtron">
-            <p class="page-title">Remove Isolation</p>
+            <p class="page-title">Edit/Remove Isolation</p>
             <hr class="isolTitleHR">
             <div class="card addIso-card">
                 <p class="card-header addIso-card-header">Select Asset to Isolate</p>
@@ -26,7 +26,7 @@
                 <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <i class="fa fa-exclamation-circle modalTitleFA modalFaRed" aria-hidden="true"></i>
+                            <i class="fa fa-exclamation-circle modalTitleFA" aria-hidden="true"></i>
                             <h5 class="modal-title"></h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>

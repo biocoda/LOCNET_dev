@@ -90,6 +90,10 @@
     margin-top: 6px;
 }
 
+.lastUpdateP {
+    padding-top: 10px;
+}
+
 /* ISOLATION CARD LIST AND ROWS -------------------------*/
 
 .isocd-ul {

@@ -70,6 +70,7 @@
             </li>
         </ul>
     <hr class="isocd-divider"> 
+    <p class="card-text lastUpdateP"><small class="text-muted">Last updated <?php echo $updateTimestamp->format('j-M-Y H:i:s'); ?></small></p>
     </div>
 </div>        
 <script type="text/javascript">

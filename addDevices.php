@@ -147,7 +147,7 @@ if ($_SESSION['currentAssetID']) {
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <i class="fa fa-exclamation-circle modalTitleFA modalFaRed" aria-hidden="true"></i>
+                        <i class="fa fa-exclamation-circle modalTitleFA" aria-hidden="true"></i>
                         <h5 class="modal-title"></h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
@@ -277,8 +277,8 @@ if ($_POST) {
         $cdaIso = $_POST['cdaIsolatedHD'];
         $elecIso = $_POST['elecIsolatedHD'];
 
-        $insertIsoSQL = "INSERT INTO `isolations`(`isolation_id`, `assets_asset_id`, `users_user_id`, `date_removed`, `steam_isolated`, `water_isolated`, `cda_isolated`, `elec_isolated`) 
-                            VALUES (null, $currentAsset, $currentUser, null, $stmIso, $watIso, $cdaIso, $elecIso)"; 
+        $insertIsoSQL = "INSERT INTO `isolations`(`isolation_id`, `assets_asset_id`, `users_user_id`, `date_removed`, `steam_isolated`, `water_isolated`, `cda_isolated`, `elec_isolated`, `last_updated`) 
+                            VALUES (null, $currentAsset, $currentUser, null, $stmIso, $watIso, $cdaIso, $elecIso, NOW())"; 
 
         if (mysqli_query($link, $insertIsoSQL)) {
 
@@ -292,7 +292,7 @@ if ($_POST) {
         } else {
             ?>
             <script type='text/javascript'> $(document).ready(function(){ 
-                launchSM('Error', 'Isolation not written to database);
+                launchSM('Error', 'Isolation not written to database');
                 });
             </script>
             <?php

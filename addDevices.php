@@ -1,24 +1,21 @@
 <?php 
     include_once("sessionCheck.php");
     include_once("header.php"); 
-?>
-<?php 
+    $currentAsset = $_SESSION['currentAssetID'];
+    $currentUser = $_SESSION['id'];
 
-$currentAsset = $_SESSION['currentAssetID'];
-$currentUser = $_SESSION['id'];
+    if ($_SESSION['currentAssetID']) {
 
-if ($_SESSION['currentAssetID']) {
-
-    include("db_connection.php");
-    // get the assets from asset ID passed from previous page
-    $getDeviceQry = "SELECT `asset_name`, `description`, `steam_isolator`, `water_isolator`, `cda_isolator`, `elec_isolator` FROM `assets` WHERE `asset_id` = $currentAsset";
- 
-    if ($getDevicesQRES = mysqli_query($link, $getDeviceQry)) {
-        $deviceRow = mysqli_fetch_assoc($getDevicesQRES);
+        include("db_connection.php");
+        // get the assets from asset ID passed from previous page
+        $getDeviceQry = "SELECT `asset_name`, `description`, `steam_isolator`, `water_isolator`, `cda_isolator`, `elec_isolator` FROM `assets` WHERE `asset_id` = $currentAsset";
+    
+        if ($getDevicesQRES = mysqli_query($link, $getDeviceQry)) {
+            $deviceRow = mysqli_fetch_assoc($getDevicesQRES);
+        }
+    } else {
+        echo "error with getting session id from previous page";
     }
-} else {
-    echo "error with getting session id from previous page";
-}
 ?>  
 <div class="mainContent">
     <div class="jumbotron isocd-jtron">

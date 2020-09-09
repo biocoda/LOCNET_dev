@@ -281,18 +281,28 @@ if ($_POST) {
 
         if (mysqli_query($link, $insertIsoSQL)) {
 
-            // returns the emails of stakeholders
+            // returns the emails of stakeholders if insert is successful
             if ($stakeholderRes = mysqli_query($link, $getStakeholdersQRY)) {
 
                 while ($stakeholderRow = mysqli_fetch_assoc($stakeholderRes)) {
 
-                    // do something here with stakeholder email e.g. new iso has been added to ??
-                    // call send email func with each address as prameter
-                    // print_r($stakeholderRow);
+                    $emailTo = "".$stakeholderRow['user_email']."";
+                    $subject = "LOCNET Notification";
+                    $body = "".$deviceRow['asset_name']." ".$deviceRow['description']." has been isolated.";
+                    $headers = "From: paul@biocoda.com";
+                    
+                    if (mail($emailTo, $subject, $body, $headers)) {
+                        
+                        $noAddon = " Asset stakeholders have been notified.";
+                        
+                    } else {
+                        
+                        $noAddon = " Asset stakeholders have not been notified.";
+                        
+                    }
                 }
             }
-
-            $sMOutputStr = "You have isolated ".$deviceRow['asset_name']."-".$deviceRow["description"];
+            $sMOutputStr = "You have isolated ".$deviceRow['asset_name']."-".$deviceRow["description"].".".$noAddon."";
             ?>
             <script type='text/javascript'> $(document).ready(function(){ 
                 launchSM('Info', '<?php echo $sMOutputStr ?>');
@@ -307,7 +317,6 @@ if ($_POST) {
             </script>
             <?php
         }        
-
     } else {
         ?>
         <script type='text/javascript'> $(document).ready(function(){ 

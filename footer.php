@@ -17,6 +17,8 @@
 	<!-- <script src="js/perfect-scrollbar.min.js"></script> -->
 	<script src="js/coreui.min.js"></script>
 	<script src="js/locnetJS.js"></script>
+	<!-- <script src="js/html5-qrcode.min.js"></script> -->
+	<script src="https://rawgit.com/sitepoint-editors/jsqrcode/master/src/qr_packed.js"></script>
  
 </body>
 </html>

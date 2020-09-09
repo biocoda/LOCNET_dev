@@ -317,13 +317,23 @@ if ($_POST) {
 
                 while ($stakeholderRow = mysqli_fetch_assoc($stakeholderRes)) {
 
-                    // do something here with stakeholder email e.g. new iso has been updated to ??
-                    // call send email func with each address as prameter
-                    // print_r($stakeholderRow);
+                    $emailTo = "".$stakeholderRow['user_email']."";
+                    $subject = "LOCNET Notification";
+                    $body = "Isolations for: ".$deviceRow['asset_name']."-".$deviceRow["description"]." have been updated.";
+                    $headers = "From: locnet@biocoda.com";
+                    
+                    if (mail($emailTo, $subject, $body, $headers)) {
+                        
+                        $noAddon = " Asset stakeholders have been notified.";
+                        
+                    } else {
+                        
+                        $noAddon = " Asset stakeholders have not been notified.";
+                        
+                    }
                 }
             }
-
-            $sMOutputStr = "You have updated the isolations for ".$deviceRow['asset_name']."-".$deviceRow["description"];
+            $sMOutputStr = "Isolations for: ".$deviceRow['asset_name']."-".$deviceRow["description"]." have been updated.".$noAddon;
             ?>
             <script type='text/javascript'> $(document).ready(function(){ 
                 launchSM('Info', '<?php echo $sMOutputStr ?>');
@@ -354,15 +364,26 @@ if ($_POST) {
 
                 while ($stakeholderRow = mysqli_fetch_assoc($stakeholderRes)) {
 
-                    // do something here with stakeholder email e.g. new iso has been removed from ??
-                    // call send email func with each address as prameter
-                    // print_r($stakeholderRow);
+                    $emailTo = "".$stakeholderRow['user_email']."";
+                    $subject = "LOCNET Notification";
+                    $body = "All isolations have been removed from: ".$deviceRow['asset_name']." ".$deviceRow['description'].".";
+                    $headers = "From: locnet@biocoda.com";
+                    
+                    if (mail($emailTo, $subject, $body, $headers)) {
+                        
+                        $noAddon = " Asset stakeholders have been notified.";
+                        
+                    } else {
+                        
+                        $noAddon = " Asset stakeholders have not been notified.";
+                        
+                    }
                 }
             }
-
+            $sMOutputStr = "Isolations for: ".$deviceRow['asset_name']."-".$deviceRow["description"]." have been removed.".$noAddon;
             ?>
             <script type='text/javascript'> $(document).ready(function(){ 
-                launchRM('Warning', 'All isolations have been removed');
+                launchRM('Warning', '<?php echo $sMOutputStr ?>');
                 });
             </script>
             <?php
